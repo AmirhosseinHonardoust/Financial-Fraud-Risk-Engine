@@ -27,8 +27,26 @@ class ValidationAndScoringTests(unittest.TestCase):
                 "hour": [9, 23, 10, 2, 14, 1, 11, 3],
                 "device_risk_score": [0.05, 0.9, 0.1, 0.85, 0.02, 0.95, 0.07, 0.88],
                 "ip_risk_score": [0.03, 0.8, 0.12, 0.9, 0.04, 0.93, 0.1, 0.86],
-                "transaction_type": ["purchase", "transfer", "purchase", "transfer", "purchase", "transfer", "purchase", "transfer"],
-                "merchant_category": ["retail", "crypto", "grocery", "electronics", "retail", "crypto", "grocery", "electronics"],
+                "transaction_type": [
+                    "purchase",
+                    "transfer",
+                    "purchase",
+                    "transfer",
+                    "purchase",
+                    "transfer",
+                    "purchase",
+                    "transfer",
+                ],
+                "merchant_category": [
+                    "retail",
+                    "crypto",
+                    "grocery",
+                    "electronics",
+                    "retail",
+                    "crypto",
+                    "grocery",
+                    "electronics",
+                ],
                 "country": ["DE", "RU", "DE", "CN", "DE", "RU", "FR", "CN"],
                 TARGET_COL: [0, 1, 0, 1, 0, 1, 0, 1],
             }
@@ -44,18 +62,25 @@ class ValidationAndScoringTests(unittest.TestCase):
 
     def test_missing_required_feature_raises_clear_error(self) -> None:
         df = self._demo_transactions().drop(columns=[NUMERIC_FEATURES[0]])
+
         with self.assertRaisesRegex(DataValidationError, "missing required columns"):
             validate_scoring_dataframe(df)
 
     def test_invalid_numeric_feature_raises(self) -> None:
         df = self._demo_transactions()
+
+        # Cast first so pandas allows an invalid string value in a numeric feature.
+        # The validator should catch this, not pandas assignment.
+        df["amount"] = df["amount"].astype(object)
         df.loc[0, "amount"] = "not-a-number"
+
         with self.assertRaisesRegex(DataValidationError, "invalid numeric"):
             validate_scoring_dataframe(df)
 
     def test_binary_target_validation_rejects_non_binary_labels(self) -> None:
         df = self._demo_transactions()
         df.loc[0, TARGET_COL] = 2
+
         with self.assertRaisesRegex(DataValidationError, "binary"):
             validate_binary_target(df)
 
@@ -81,7 +106,10 @@ class ValidationAndScoringTests(unittest.TestCase):
         self.assertTrue(scored["fraud_probability"].between(0, 1).all())
         self.assertTrue(set(scored["fraud_flag"].unique()).issubset({0, 1}))
         self.assertTrue(
-            np.all(scored["fraud_probability"].to_numpy()[:-1] >= scored["fraud_probability"].to_numpy()[1:])
+            np.all(
+                scored["fraud_probability"].to_numpy()[:-1]
+                >= scored["fraud_probability"].to_numpy()[1:]
+            )
         )
 
 
