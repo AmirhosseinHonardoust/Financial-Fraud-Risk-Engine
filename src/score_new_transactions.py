@@ -8,6 +8,7 @@ import joblib
 import pandas as pd
 
 from .config import MODELS_DIR
+from .reason_codes import add_reason_codes
 from .validation import (
     DataValidationError,
     prepare_features_for_scoring,
@@ -56,6 +57,7 @@ def score_dataframe(
     df_scored["fraud_probability"] = probs
     df_scored["fraud_flag"] = preds
     df_scored = df_scored.sort_values("fraud_probability", ascending=False).reset_index(drop=True)
+    df_scored = add_reason_codes(df_scored, threshold=threshold)
     return df_scored
 
 
