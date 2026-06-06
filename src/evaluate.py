@@ -23,6 +23,7 @@ from .config import (
     COST_FALSE_NEGATIVE,
     COST_FALSE_POSITIVE,
 )
+from .validation import validate_training_dataframe
 
 
 def load_model_and_data():
@@ -34,6 +35,7 @@ def load_model_and_data():
 
     test_path = PROCESSED_DATA_DIR / "transactions_test.csv"
     test_df = pd.read_csv(test_path)
+    validate_training_dataframe(test_df, context="processed test data")
     X_test = test_df.drop(columns=[TARGET_COL])
     y_test = test_df[TARGET_COL]
 
