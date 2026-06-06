@@ -1,16 +1,17 @@
+from __future__ import annotations
+
 import json
 
 import joblib
-import numpy as np
 import pandas as pd
-from sklearn.metrics import roc_auc_score, classification_report
-
-from .config import (
-    PROCESSED_DATA_DIR,
-    MODELS_DIR,
-    METRICS_DIR,
-    TARGET_COL,
+from sklearn.metrics import (
+    average_precision_score,
+    brier_score_loss,
+    classification_report,
+    roc_auc_score,
 )
+
+from .config import METRICS_DIR, MODELS_DIR, PROCESSED_DATA_DIR, TARGET_COL
 from .features import build_pipeline
 from .validation import validate_training_dataframe
 
@@ -44,13 +45,12 @@ def train_and_evaluate() -> dict:
     pipeline = build_pipeline()
     pipeline.fit(X_train, y_train)
 
-    # Probabilities for ROC-AUC and later threshold tuning
     y_proba = pipeline.predict_proba(X_test)[:, 1]
+    y_pred_default = (y_proba >= 0.5).astype(int)
 
     roc_auc = roc_auc_score(y_test, y_proba)
-
-    # Default 0.5 threshold just for a baseline classification report
-    y_pred_default = (y_proba >= 0.5).astype(int)
+    average_precision = average_precision_score(y_test, y_proba)
+    brier_score = brier_score_loss(y_test, y_proba)
 
     cls_report = classification_report(
         y_test,
@@ -61,16 +61,22 @@ def train_and_evaluate() -> dict:
 
     metrics = {
         "roc_auc": float(roc_auc),
+        "average_precision": float(average_precision),
+        "brier_score": float(brier_score),
         "classification_report_default_threshold": cls_report,
+        "n_train_samples": int(len(y_train)),
         "n_test_samples": int(len(y_test)),
+        "positive_rate_train": float(y_train.mean()),
         "positive_rate_test": float(y_test.mean()),
+        "note": (
+            "This synthetic demo dataset is highly separable. Probability metrics should be "
+            "interpreted as workflow checks, not real-world fraud benchmark performance."
+        ),
     }
 
-    # Persist model
     model_path = MODELS_DIR / "fraud_pipeline.joblib"
     joblib.dump(pipeline, model_path)
 
-    # Persist metrics
     metrics_path = METRICS_DIR / "metrics.json"
     with metrics_path.open("w") as f:
         json.dump(metrics, f, indent=2)
@@ -78,6 +84,8 @@ def train_and_evaluate() -> dict:
     print(f"Saved model to:   {model_path}")
     print(f"Saved metrics to: {metrics_path}")
     print(f"ROC-AUC (test): {roc_auc:.4f}")
+    print(f"Average precision (test): {average_precision:.4f}")
+    print(f"Brier score (test): {brier_score:.4f}")
 
     return metrics
 
