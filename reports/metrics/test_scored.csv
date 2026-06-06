@@ -1,0 +1,701 @@
+transaction_id,user_id,amount,hour,device_risk_score,ip_risk_score,transaction_type,merchant_category,country,is_fraud,fraud_probability,fraud_flag,reason_codes
+227,55120,86.22,2,0.7022,0.6843,transfer,crypto,CN,1,0.9832380545793654,1,Critical model risk score; Elevated device risk score; Elevated IP risk score; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+2350,14938,198.69,3,0.6517,0.467,transfer,gaming,RU,1,0.9632258373426846,1,Critical model risk score; Elevated device risk score; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+794,96727,50.98,3,0.7254,0.6896,purchase,crypto,RU,1,0.9472314929673945,1,Critical model risk score; Elevated device risk score; Elevated IP risk score; Transaction occurred during unusual hours; Merchant category 'crypto' is higher risk in the demo data
+1900,60945,141.64,2,0.6429,0.5901,transfer,crypto,US,1,0.9418178179076265,1,Critical model risk score; Elevated device risk score; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'crypto' is higher risk in the demo data
+3398,56797,249.8,3,0.6555,0.5038,refund,gaming,RU,1,0.9336378669563046,1,Critical model risk score; Elevated device risk score; Transaction occurred during unusual hours; Country signal is associated with higher synthetic-demo risk
+1568,46517,50.09,2,0.5464,0.7434,transfer,electronics,CN,1,0.9280324505935769,1,Critical model risk score; Elevated IP risk score; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+2298,92970,127.47,0,0.7351,0.5007,withdrawal,travel,CN,1,0.9224804426183527,1,Critical model risk score; Elevated device risk score; Transaction occurred during unusual hours; Transaction type 'withdrawal' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+1902,91377,79.14,1,0.6046,0.4969,refund,travel,RU,1,0.9171960034698288,1,Critical model risk score; Elevated device risk score; Transaction occurred during unusual hours; Country signal is associated with higher synthetic-demo risk
+3372,32768,73.45,3,0.4625,0.7082,refund,crypto,RU,1,0.9117583498377273,1,Critical model risk score; Elevated IP risk score; Transaction occurred during unusual hours; Merchant category 'crypto' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+2242,69226,239.22,11,0.6422,0.8279,withdrawal,travel,CN,1,0.8972451259992266,1,Critical model risk score; Elevated device risk score; High IP risk score; Transaction type 'withdrawal' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+2911,38597,61.0,4,0.65,0.6481,refund,travel,GB,1,0.8815014843225096,1,Critical model risk score; Elevated device risk score; Elevated IP risk score; Transaction occurred during unusual hours
+826,54033,151.34,13,0.5959,0.7397,purchase,gaming,CN,1,0.8665665548308938,1,Critical model risk score; Elevated IP risk score; Country signal is associated with higher synthetic-demo risk
+2583,34927,132.58,0,0.7827,0.8524,purchase,crypto,DE,1,0.8584972017485929,1,Critical model risk score; Elevated device risk score; High IP risk score; Transaction occurred during unusual hours; Merchant category 'crypto' is higher risk in the demo data
+3158,18254,37.6,3,0.5106,0.7703,purchase,crypto,CN,1,0.8558640583947364,1,Critical model risk score; Elevated IP risk score; Transaction occurred during unusual hours; Merchant category 'crypto' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+1386,20826,50.08,21,0.5763,0.5503,transfer,electronics,RU,1,0.8429229247312745,1,Critical model risk score; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+998,88056,61.03,13,0.6105,0.6849,transfer,electronics,NL,1,0.8421467677648056,1,Critical model risk score; Elevated device risk score; Elevated IP risk score; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+1139,35946,222.18,22,0.6877,0.3616,withdrawal,electronics,FR,1,0.8418005886890256,1,Critical model risk score; Elevated device risk score; Transaction type 'withdrawal' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+2823,60318,76.49,15,0.6844,0.5339,purchase,crypto,US,1,0.8411317874736423,1,Critical model risk score; Elevated device risk score; Merchant category 'crypto' is higher risk in the demo data
+2555,76176,73.32,8,0.7895,0.5813,transfer,electronics,GB,1,0.8363425005459183,1,Critical model risk score; Elevated device risk score; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+434,29936,212.04,18,0.6333,0.6401,purchase,travel,CN,1,0.8349335943643449,1,Critical model risk score; Elevated device risk score; Elevated IP risk score; Country signal is associated with higher synthetic-demo risk
+633,61457,101.24,15,0.7144,0.6622,transfer,crypto,DE,1,0.827359383389309,1,Critical model risk score; Elevated device risk score; Elevated IP risk score; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'crypto' is higher risk in the demo data
+451,17748,114.17,1,0.5409,0.4478,transfer,crypto,DE,1,0.8260574144295498,1,Critical model risk score; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'crypto' is higher risk in the demo data
+3207,47115,289.87,3,0.4718,0.6099,transfer,electronics,DE,1,0.8135326792288576,1,Critical model risk score; Elevated IP risk score; Transaction amount is high for this batch; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+3478,64520,230.92,2,0.8346,0.742,purchase,retail,DE,0,0.8115343555509307,1,Critical model risk score; High device risk score; Elevated IP risk score; Transaction occurred during unusual hours
+1187,80600,25.59,20,0.7686,0.6865,withdrawal,electronics,CN,0,0.8003415523362672,1,Critical model risk score; Elevated device risk score; Elevated IP risk score; Transaction type 'withdrawal' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+1364,29682,470.02,1,0.3875,0.4835,withdrawal,travel,FR,1,0.8002838325892557,1,Critical model risk score; Transaction amount is high for this batch; Transaction occurred during unusual hours; Transaction type 'withdrawal' is higher risk in the demo data
+2873,25733,88.15,3,0.3143,0.4972,transfer,gaming,GB,1,0.7999137901183282,1,Critical model risk score; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+1482,87686,179.14,3,0.5752,0.5596,transfer,retail,DE,1,0.7998805346887684,1,Critical model risk score; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+2987,25331,42.01,1,0.5277,0.7391,refund,crypto,NL,1,0.7950136523669752,1,Critical model risk score; Elevated IP risk score; Transaction occurred during unusual hours; Merchant category 'crypto' is higher risk in the demo data
+3125,11233,250.74,15,0.5687,0.5853,purchase,gaming,GB,1,0.7917151784167448,1,Critical model risk score
+2775,98746,103.08,21,0.6128,0.5076,refund,crypto,DE,1,0.7894565150002809,1,Critical model risk score; Elevated device risk score; Merchant category 'crypto' is higher risk in the demo data
+1246,86309,99.04,23,0.6167,0.3683,withdrawal,retail,US,1,0.7792720818575062,1,Critical model risk score; Elevated device risk score; Transaction occurred during unusual hours; Transaction type 'withdrawal' is higher risk in the demo data
+3310,83064,23.61,20,0.7866,0.7949,transfer,retail,CN,1,0.7772881075095341,1,Critical model risk score; Elevated device risk score; Elevated IP risk score; Transaction type 'transfer' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+2922,44892,223.51,17,0.4266,0.4472,transfer,gaming,US,1,0.770105405072367,1,Critical model risk score; Transaction type 'transfer' is higher risk in the demo data
+2698,48679,87.84,18,0.6948,0.2418,withdrawal,crypto,CN,1,0.7685856681958925,1,Critical model risk score; Elevated device risk score; Transaction type 'withdrawal' is higher risk in the demo data; Merchant category 'crypto' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+797,61552,51.3,19,0.8925,0.538,transfer,retail,RU,1,0.7630586162669332,1,Critical model risk score; High device risk score; Transaction type 'transfer' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+3169,12807,48.95,8,0.824,0.3835,refund,electronics,CN,1,0.7626944098678548,1,Critical model risk score; High device risk score; Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+1743,30845,725.49,18,0.8183,0.3582,transfer,retail,RU,1,0.7563862153260933,1,Critical model risk score; High device risk score; Transaction amount is high for this batch; Transaction type 'transfer' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+3344,63741,57.17,21,0.567,0.6415,purchase,electronics,NL,0,0.7539469468226596,1,Critical model risk score; Elevated IP risk score; Merchant category 'electronics' is higher risk in the demo data
+2034,66927,39.05,2,0.1748,0.5917,purchase,retail,CN,0,0.7471613644777616,1,Model score is above the review threshold; Transaction occurred during unusual hours; Country signal is associated with higher synthetic-demo risk
+2388,41984,1108.72,18,0.7248,0.582,transfer,crypto,DE,1,0.7470621956278138,1,Model score is above the review threshold; Elevated device risk score; Transaction amount is high for this batch; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'crypto' is higher risk in the demo data
+3192,78910,99.68,21,0.4728,0.7017,purchase,electronics,FR,1,0.7410036501777677,1,Model score is above the review threshold; Elevated IP risk score; Merchant category 'electronics' is higher risk in the demo data
+1728,85146,43.41,1,0.4658,0.77,purchase,grocery,RU,1,0.728356170634822,1,Model score is above the review threshold; Elevated IP risk score; Transaction occurred during unusual hours; Country signal is associated with higher synthetic-demo risk
+1911,58886,28.87,11,0.7482,0.3802,transfer,electronics,US,1,0.7274899172141529,1,Model score is above the review threshold; Elevated device risk score; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+3218,74574,63.83,15,0.4316,0.6324,withdrawal,travel,GB,1,0.7269092211385929,1,Model score is above the review threshold; Elevated IP risk score; Transaction type 'withdrawal' is higher risk in the demo data
+3367,16941,575.37,11,0.7042,0.9158,purchase,gaming,RU,0,0.7213321962458332,1,Model score is above the review threshold; Elevated device risk score; High IP risk score; Transaction amount is high for this batch; Country signal is associated with higher synthetic-demo risk
+2840,13278,81.55,17,0.6422,0.5542,transfer,travel,DE,1,0.6953705997359332,1,Model score is above the review threshold; Elevated device risk score; Transaction type 'transfer' is higher risk in the demo data
+1448,65514,135.18,2,0.1414,0.8865,purchase,retail,NL,0,0.6941179077805621,1,Model score is above the review threshold; High IP risk score; Transaction occurred during unusual hours
+2187,58209,61.03,6,0.4551,0.5129,purchase,gaming,RU,0,0.6913841394832314,1,Model score is above the review threshold; Country signal is associated with higher synthetic-demo risk
+40,86201,158.3,5,0.3735,0.3529,transfer,retail,CN,0,0.6898684319883124,1,Model score is above the review threshold; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+741,55890,173.81,0,0.2875,0.384,purchase,travel,RU,1,0.6880592534682713,1,Model score is above the review threshold; Transaction occurred during unusual hours; Country signal is associated with higher synthetic-demo risk
+143,92689,72.1,15,0.449,0.5934,purchase,electronics,CN,0,0.675910572281,1,Model score is above the review threshold; Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+1428,87983,16.14,1,0.4396,0.522,purchase,electronics,RU,1,0.674585306202378,1,Model score is above the review threshold; Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+3260,49833,101.13,7,0.2556,0.519,withdrawal,gaming,CN,1,0.6701336572807218,1,Model score is above the review threshold; Transaction type 'withdrawal' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+2643,69173,33.84,6,0.5737,0.9473,transfer,retail,NL,0,0.6610740501832809,1,Model score is above the review threshold; High IP risk score; Transaction type 'transfer' is higher risk in the demo data
+1729,21741,187.33,13,0.4578,0.16,transfer,travel,RU,1,0.6545859558894833,1,Model score is above the review threshold; Transaction type 'transfer' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+1045,99510,14.93,20,0.437,0.5775,withdrawal,travel,CN,1,0.6520343844539472,1,Model score is above the review threshold; Transaction type 'withdrawal' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+2060,26371,286.6,23,0.9599,0.4698,transfer,grocery,NL,1,0.6429557629811711,1,Model score is above the review threshold; High device risk score; Transaction amount is high for this batch; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+1063,27707,36.19,9,0.7197,0.7893,withdrawal,retail,FR,0,0.6408599224130677,1,Model score is above the review threshold; Elevated device risk score; Elevated IP risk score; Transaction type 'withdrawal' is higher risk in the demo data
+1683,95852,152.07,23,0.5509,0.1927,transfer,travel,GB,1,0.640233123376137,1,Model score is above the review threshold; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+1617,92194,70.08,14,0.3407,0.5431,withdrawal,crypto,FR,1,0.6386218605522174,1,Model score is above the review threshold; Transaction type 'withdrawal' is higher risk in the demo data; Merchant category 'crypto' is higher risk in the demo data
+501,91219,113.26,9,0.4971,0.6035,purchase,electronics,DE,0,0.6344059923410308,1,Model score is above the review threshold; Elevated IP risk score; Merchant category 'electronics' is higher risk in the demo data
+1422,32734,15.23,12,0.8371,0.7984,withdrawal,retail,NL,0,0.6324462366110185,1,Model score is above the review threshold; High device risk score; Elevated IP risk score; Transaction type 'withdrawal' is higher risk in the demo data
+1320,12110,59.99,13,0.5117,0.8807,purchase,grocery,GB,0,0.6320611887330126,1,Model score is above the review threshold; High IP risk score
+2227,15702,288.46,11,0.5489,0.3349,transfer,retail,FR,0,0.6293955969742804,1,Model score is above the review threshold; Transaction amount is high for this batch; Transaction type 'transfer' is higher risk in the demo data
+289,54790,41.02,21,0.6216,0.8353,purchase,retail,CN,0,0.626005029534952,1,Model score is above the review threshold; Elevated device risk score; High IP risk score; Country signal is associated with higher synthetic-demo risk
+1769,62217,94.25,21,0.3824,0.6395,transfer,electronics,DE,0,0.6102296976974292,1,Model score is above the review threshold; Elevated IP risk score; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+1826,72812,18.05,0,0.8351,0.3672,transfer,grocery,RU,1,0.606183207929902,1,Model score is above the review threshold; High device risk score; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+3463,82749,258.33,11,0.6899,0.6779,purchase,retail,DE,1,0.5947399523767267,1,Model score is above the review threshold; Elevated device risk score; Elevated IP risk score
+3353,12326,135.54,21,0.2142,0.7804,transfer,travel,NL,1,0.5882672443267095,1,Model score is above the review threshold; Elevated IP risk score; Transaction type 'transfer' is higher risk in the demo data
+2321,88616,77.69,21,0.6058,0.953,purchase,grocery,FR,1,0.5832467809286975,1,Model score is above the review threshold; Elevated device risk score; High IP risk score
+422,59897,25.36,23,0.5537,0.5292,purchase,travel,FR,1,0.5805648125486446,1,Model score is above the review threshold; Transaction occurred during unusual hours
+1598,81755,53.0,22,0.6714,0.6838,purchase,electronics,DE,0,0.5797794912095564,1,Model score is above the review threshold; Elevated device risk score; Elevated IP risk score; Merchant category 'electronics' is higher risk in the demo data
+2887,53799,23.27,17,0.6612,0.6158,purchase,retail,US,1,0.5692563477159741,1,Model score is above the review threshold; Elevated device risk score; Elevated IP risk score
+1025,35279,72.16,12,0.8646,0.581,purchase,gaming,DE,0,0.5663276048276038,1,Model score is above the review threshold; High device risk score
+1599,90959,132.52,7,0.5474,0.2882,transfer,retail,DE,0,0.5652616784861713,1,Model score is above the review threshold; Transaction type 'transfer' is higher risk in the demo data
+1059,15258,140.35,11,0.4517,0.6705,purchase,gaming,DE,1,0.562921010347506,1,Model score is above the review threshold; Elevated IP risk score
+395,44236,83.96,5,0.3207,0.8494,purchase,electronics,DE,1,0.5625218979962509,1,Model score is above the review threshold; High IP risk score; Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data
+863,82608,42.03,4,0.4332,0.3189,transfer,retail,US,0,0.5560505546824976,1,Model score is above the review threshold; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+692,17605,81.36,6,0.7873,0.7101,purchase,retail,DE,0,0.5509386704059555,1,Model score is above the review threshold; Elevated device risk score; Elevated IP risk score
+1850,44839,243.69,22,0.9779,0.4219,purchase,travel,DE,0,0.5457208994772833,1,Model score is above the review threshold; High device risk score
+511,98742,128.22,23,0.3177,0.2428,withdrawal,electronics,RU,1,0.5422817652636067,1,Model score is above the review threshold; Transaction occurred during unusual hours; Transaction type 'withdrawal' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+1318,18092,365.41,2,0.2841,0.5032,withdrawal,grocery,DE,1,0.537733629638878,1,Model score is above the review threshold; Transaction amount is high for this batch; Transaction occurred during unusual hours; Transaction type 'withdrawal' is higher risk in the demo data
+2542,57039,74.84,22,0.6343,0.3132,purchase,electronics,CN,1,0.5367782518208246,1,Model score is above the review threshold; Elevated device risk score; Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+1814,94186,16.47,14,0.7911,0.5646,purchase,grocery,GB,0,0.5367364633751937,1,Model score is above the review threshold; Elevated device risk score
+2342,57074,27.82,14,0.5417,0.5185,withdrawal,retail,FR,1,0.5363395920520982,1,Model score is above the review threshold; Transaction type 'withdrawal' is higher risk in the demo data
+2104,26433,26.15,3,0.1307,0.5915,transfer,travel,US,0,0.5319353200353346,1,Model score is above the review threshold; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+621,39209,39.37,15,0.8966,0.599,withdrawal,grocery,NL,0,0.5307567965455018,1,Model score is above the review threshold; High device risk score; Transaction type 'withdrawal' is higher risk in the demo data
+85,60174,55.77,15,0.2916,0.4363,refund,gaming,RU,1,0.5302951900940132,1,Model score is above the review threshold; Country signal is associated with higher synthetic-demo risk
+3404,97671,62.67,7,0.7188,0.4859,purchase,grocery,NL,0,0.5293637470909682,1,Model score is above the review threshold; Elevated device risk score
+971,32894,677.11,15,0.3217,0.8168,refund,travel,DE,0,0.5252531383472223,1,Model score is above the review threshold; High IP risk score; Transaction amount is high for this batch
+3134,96898,65.59,22,0.3263,0.6334,withdrawal,retail,FR,1,0.5175650097529023,1,Model score is above the review threshold; Elevated IP risk score; Transaction type 'withdrawal' is higher risk in the demo data
+3232,23860,10.17,18,0.4918,0.844,purchase,electronics,GB,0,0.5125517566059344,1,Model score is above the review threshold; High IP risk score; Merchant category 'electronics' is higher risk in the demo data
+2415,81906,6.32,10,0.8212,0.8234,withdrawal,grocery,GB,0,0.505638847094549,1,Model score is above the review threshold; High device risk score; High IP risk score; Transaction type 'withdrawal' is higher risk in the demo data
+1566,23499,33.06,22,0.4552,0.3694,purchase,gaming,FR,0,0.5055886125277508,1,Model score is above the review threshold
+1880,39419,26.89,6,0.6183,0.3874,withdrawal,grocery,US,0,0.4844722349292913,1,Model score is above the review threshold; Elevated device risk score; Transaction type 'withdrawal' is higher risk in the demo data
+236,86705,236.4,14,0.6886,0.6432,withdrawal,grocery,DE,0,0.48334954947886083,1,Model score is above the review threshold; Elevated device risk score; Elevated IP risk score; Transaction type 'withdrawal' is higher risk in the demo data
+51,81977,37.87,11,0.4212,0.6899,purchase,crypto,FR,0,0.475726090841263,1,Model score is above the review threshold; Elevated IP risk score; Merchant category 'crypto' is higher risk in the demo data
+130,76220,224.12,11,0.5581,0.2655,withdrawal,grocery,FR,0,0.4657700689671812,1,Model score is above the review threshold; Transaction type 'withdrawal' is higher risk in the demo data
+2152,16165,54.71,23,0.2983,0.5674,purchase,crypto,US,1,0.46536908024724527,1,Model score is above the review threshold; Transaction occurred during unusual hours; Merchant category 'crypto' is higher risk in the demo data
+3306,88538,68.1,8,0.7843,0.2441,transfer,grocery,FR,1,0.4643251160235472,1,Model score is above the review threshold; Elevated device risk score; Transaction type 'transfer' is higher risk in the demo data
+3,48034,24.34,16,0.6755,0.664,purchase,grocery,FR,1,0.46177284014254905,1,Model score is above the review threshold; Elevated device risk score; Elevated IP risk score
+2785,25019,27.07,16,0.6407,0.6842,purchase,retail,FR,0,0.4594757023587524,1,Model score is above the review threshold; Elevated device risk score; Elevated IP risk score
+1121,27179,15.5,18,0.7423,0.5639,purchase,electronics,DE,0,0.4463463367996023,1,Model score is above the review threshold; Elevated device risk score; Merchant category 'electronics' is higher risk in the demo data
+1103,49361,63.25,16,0.6703,0.9291,purchase,retail,DE,0,0.44315954198529406,1,Model score is above the review threshold; Elevated device risk score; High IP risk score
+648,21695,93.23,15,0.8129,0.3078,purchase,travel,NL,0,0.4365627508536897,1,Model score is above the review threshold; High device risk score
+893,76826,20.97,16,0.5695,0.5803,purchase,retail,FR,0,0.42169660370137174,1,Model score is above the review threshold
+634,92210,158.39,13,0.386,0.9294,purchase,grocery,FR,0,0.4212830254092805,1,Model score is above the review threshold; High IP risk score
+199,56863,40.72,2,0.8362,0.1587,purchase,electronics,US,1,0.4094197674333943,1,Model score is above the review threshold; High device risk score; Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data
+2513,13827,67.76,15,0.0355,0.8133,withdrawal,crypto,DE,1,0.4064730915456526,1,Model score is above the review threshold; High IP risk score; Transaction type 'withdrawal' is higher risk in the demo data; Merchant category 'crypto' is higher risk in the demo data
+1269,60780,397.26,14,0.4958,0.2316,transfer,grocery,NL,0,0.4052381675667699,1,Model score is above the review threshold; Transaction amount is high for this batch; Transaction type 'transfer' is higher risk in the demo data
+2188,77574,171.44,18,0.4428,0.027,withdrawal,retail,CN,0,0.402920743675794,1,Model score is above the review threshold; Transaction type 'withdrawal' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+558,70887,354.22,5,0.4304,0.0027,transfer,electronics,US,0,0.39723479560273434,1,Model score is above the review threshold; Transaction amount is high for this batch; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+1402,85030,80.11,15,0.4104,0.4993,purchase,crypto,DE,1,0.39565422641535014,1,Model score is above the review threshold; Merchant category 'crypto' is higher risk in the demo data
+424,75581,34.08,3,0.7448,0.1687,withdrawal,grocery,CN,1,0.39481457373476125,1,Model score is above the review threshold; Elevated device risk score; Transaction occurred during unusual hours; Transaction type 'withdrawal' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+2907,76612,236.37,23,0.1962,0.3351,transfer,retail,GB,0,0.3945401699926674,1,Model score is above the review threshold; Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+19,20767,40.42,6,0.3351,0.3416,withdrawal,gaming,NL,0,0.39330456595884544,1,Model score is above the review threshold; Transaction type 'withdrawal' is higher risk in the demo data
+2998,43141,42.15,3,0.1132,0.5069,purchase,electronics,US,0,0.39167555331055937,1,Model score is above the review threshold; Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data
+2205,17172,369.25,15,0.1458,0.5087,withdrawal,grocery,RU,0,0.3876338400653042,1,Model score is above the review threshold; Transaction amount is high for this batch; Transaction type 'withdrawal' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+3275,94636,10.59,6,0.5273,0.4958,purchase,retail,DE,0,0.3843180375626469,1,Model score is above the review threshold
+540,55171,28.2,19,0.1539,0.562,purchase,gaming,RU,0,0.38069516398608927,1,Model score is above the review threshold; Country signal is associated with higher synthetic-demo risk
+2440,64735,10.16,18,0.7573,0.7604,purchase,retail,DE,0,0.3706522891519929,1,Model score is above the review threshold; Elevated device risk score; Elevated IP risk score
+622,48218,14.88,9,0.6253,0.7137,purchase,grocery,DE,0,0.3549465287762379,1,Model score is above the review threshold; Elevated device risk score; Elevated IP risk score
+3015,53812,26.08,15,0.4528,0.6465,purchase,travel,DE,0,0.3530557397698319,1,Model score is above the review threshold; Elevated IP risk score
+951,81027,173.87,21,0.5413,0.1637,purchase,electronics,NL,0,0.34669214234846085,1,Model score is above the review threshold; Merchant category 'electronics' is higher risk in the demo data
+2575,83973,173.03,16,0.3457,0.401,purchase,travel,NL,0,0.33925652424952163,1,Model score is above the review threshold
+2677,78088,30.03,13,0.43,0.4009,purchase,travel,FR,0,0.33727041883826653,1,Model score is above the review threshold
+2475,57706,121.3,17,0.3993,0.4185,purchase,grocery,CN,0,0.33712629243043724,1,Model score is above the review threshold; Country signal is associated with higher synthetic-demo risk
+734,49127,13.7,4,0.5574,0.2633,purchase,retail,FR,0,0.33447855565180207,1,Model score is above the review threshold; Transaction occurred during unusual hours
+1104,97828,974.63,6,0.6339,0.2109,purchase,electronics,DE,0,0.33076422513000786,1,Model score is above the review threshold; Elevated device risk score; Transaction amount is high for this batch; Merchant category 'electronics' is higher risk in the demo data
+2503,52520,91.75,11,0.0773,0.6704,purchase,gaming,DE,0,0.3223259757774665,1,Model score is above the review threshold; Elevated IP risk score
+3005,88982,17.31,4,0.2337,0.3719,withdrawal,retail,DE,0,0.32151427624546886,1,Model score is above the review threshold; Transaction occurred during unusual hours; Transaction type 'withdrawal' is higher risk in the demo data
+3251,75786,220.73,2,0.0063,0.3019,purchase,electronics,RU,1,0.3202489783357904,1,Model score is above the review threshold; Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+508,86886,30.36,2,0.3574,0.3926,purchase,grocery,US,0,0.31913326934841435,1,Model score is above the review threshold; Transaction occurred during unusual hours
+2445,53635,36.58,10,0.1353,0.7322,transfer,electronics,FR,1,0.31809456716692736,1,Model score is above the review threshold; Elevated IP risk score; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+449,97969,182.2,16,0.493,0.2742,purchase,grocery,US,1,0.31809011597565745,1,Model score is above the review threshold
+6,94097,50.64,9,0.7354,0.2856,purchase,retail,NL,0,0.3171932696437229,1,Model score is above the review threshold; Elevated device risk score
+3267,98836,27.93,17,0.4806,0.214,transfer,electronics,GB,0,0.3151626336795884,1,Model score is above the review threshold; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+2001,43123,129.37,2,0.369,0.1607,purchase,gaming,NL,0,0.314710401708674,1,Model score is above the review threshold; Transaction occurred during unusual hours
+2073,95591,41.58,18,0.1303,0.4576,withdrawal,retail,RU,0,0.3128402445315848,1,Model score is above the review threshold; Transaction type 'withdrawal' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+2307,79939,125.08,12,0.7074,0.1459,purchase,retail,US,0,0.30878594416211563,1,Model score is above the review threshold; Elevated device risk score
+2466,13966,143.13,11,0.4315,0.2831,purchase,gaming,US,0,0.30722810628800573,1,Model score is above the review threshold
+1329,99122,160.1,16,0.4348,0.1344,purchase,gaming,RU,0,0.30703323468443194,1,Model score is above the review threshold; Country signal is associated with higher synthetic-demo risk
+3184,28378,74.09,19,0.2178,0.2749,transfer,crypto,FR,0,0.3021595984967713,1,Model score is above the review threshold; Transaction type 'transfer' is higher risk in the demo data; Merchant category 'crypto' is higher risk in the demo data
+2112,77549,310.82,4,0.5537,0.0078,refund,gaming,GB,0,0.29955278756836656,0,Transaction amount is high for this batch; Transaction occurred during unusual hours
+3356,16194,68.46,13,0.3679,0.4503,purchase,electronics,NL,0,0.2971329204441735,0,Merchant category 'electronics' is higher risk in the demo data
+708,49410,48.26,13,0.774,0.2367,purchase,retail,NL,0,0.2968100397180912,0,Elevated device risk score
+3391,37445,17.82,1,0.3533,0.3512,purchase,electronics,DE,0,0.29579187556934433,0,Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data
+2411,48931,385.62,16,0.1084,0.4259,withdrawal,grocery,CN,0,0.295701245518855,0,Transaction amount is high for this batch; Transaction type 'withdrawal' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+1748,79891,64.97,20,0.3319,0.3793,purchase,electronics,US,0,0.2919964397588327,0,Merchant category 'electronics' is higher risk in the demo data
+1463,48333,153.45,11,0.2905,0.2284,transfer,retail,DE,0,0.29141770668860234,0,Transaction type 'transfer' is higher risk in the demo data
+2862,93593,78.32,17,0.2755,0.414,purchase,travel,US,0,0.2913700390564458,0,No strong rule-based risk drivers identified
+2498,41136,377.95,9,0.3366,0.1876,withdrawal,electronics,DE,0,0.27957859585674744,0,Transaction amount is high for this batch; Transaction type 'withdrawal' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+2606,49968,60.9,15,0.1956,0.5468,purchase,gaming,DE,0,0.2789566155141829,0,No strong rule-based risk drivers identified
+1447,12303,21.63,2,0.2167,0.2512,refund,electronics,DE,0,0.278834152561055,0,Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data
+3295,31737,15.08,12,0.5448,0.3406,purchase,retail,FR,0,0.277975903383519,0,No strong rule-based risk drivers identified
+2994,36869,22.38,6,0.5192,0.1596,purchase,crypto,CN,0,0.27405163109671105,0,Merchant category 'crypto' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+3107,98851,95.82,5,0.2289,0.3103,purchase,retail,US,0,0.27340001809213155,0,Transaction occurred during unusual hours
+3321,16533,60.95,14,0.2918,0.7925,purchase,travel,DE,1,0.2728909820316299,0,Elevated IP risk score
+2611,67829,25.01,0,0.454,0.2932,purchase,retail,DE,0,0.2717578588193835,0,Transaction occurred during unusual hours
+642,39189,25.92,17,0.0733,0.3041,withdrawal,gaming,NL,0,0.27055497958851615,0,Transaction type 'withdrawal' is higher risk in the demo data
+659,72479,67.82,11,0.2098,0.3702,transfer,retail,NL,0,0.2698599558503069,0,Transaction type 'transfer' is higher risk in the demo data
+2312,82728,53.26,1,0.7671,0.0643,purchase,crypto,GB,1,0.26847227477377394,0,Elevated device risk score; Transaction occurred during unusual hours; Merchant category 'crypto' is higher risk in the demo data
+1257,10807,37.76,2,0.0129,0.5239,transfer,grocery,US,0,0.2677736610438619,0,Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+465,79120,63.22,16,0.4342,0.0699,transfer,electronics,CN,0,0.2668610501713636,0,Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+3186,26158,108.26,4,0.0832,0.4612,purchase,travel,DE,0,0.2663214543072858,0,Transaction occurred during unusual hours
+2183,23853,48.65,8,0.1084,0.3669,transfer,gaming,DE,0,0.2594156945371639,0,Transaction type 'transfer' is higher risk in the demo data
+2285,28595,53.12,23,0.0593,0.4523,purchase,retail,CN,0,0.2584284260022125,0,Transaction occurred during unusual hours; Country signal is associated with higher synthetic-demo risk
+1071,32010,440.82,8,0.2851,0.04,transfer,retail,GB,0,0.2581810753845149,0,Transaction amount is high for this batch; Transaction type 'transfer' is higher risk in the demo data
+2212,98548,57.3,22,0.4957,0.3114,purchase,retail,NL,0,0.25678019851153794,0,No strong rule-based risk drivers identified
+2545,84844,21.04,4,0.1562,0.3822,purchase,retail,FR,0,0.2563352927312083,0,Transaction occurred during unusual hours
+2883,57731,74.14,4,0.3831,0.2687,purchase,retail,DE,0,0.25599127820529194,0,Transaction occurred during unusual hours
+999,75074,67.83,14,0.1246,0.5983,purchase,retail,US,0,0.25571182529407555,0,No strong rule-based risk drivers identified
+3001,37032,255.72,21,0.277,0.2624,purchase,gaming,FR,0,0.2519105764084079,0,No strong rule-based risk drivers identified
+1895,74539,46.31,17,0.2721,0.609,purchase,retail,NL,0,0.24942884966733292,0,Elevated IP risk score
+2596,53443,106.77,14,0.1689,0.3476,transfer,electronics,DE,0,0.24907312914531227,0,Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+2458,78129,17.11,17,0.8832,0.3035,purchase,retail,DE,0,0.24763658502322652,0,High device risk score
+1817,42596,48.14,21,0.0425,0.3467,refund,gaming,DE,0,0.24684436114250496,0,No strong rule-based risk drivers identified
+3320,79089,211.21,12,0.2117,0.2734,transfer,grocery,US,0,0.24681931901812548,0,Transaction type 'transfer' is higher risk in the demo data
+3475,99671,202.87,10,0.269,0.0221,transfer,travel,FR,0,0.2437962800741403,0,Transaction type 'transfer' is higher risk in the demo data
+3269,99028,198.76,12,0.1978,0.0371,refund,retail,RU,0,0.24355947137117862,0,Country signal is associated with higher synthetic-demo risk
+1065,70022,34.82,5,0.2989,0.2867,transfer,retail,DE,0,0.24291607081160563,0,Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+1649,44332,93.49,12,0.1883,0.0589,refund,crypto,RU,0,0.242109876184039,0,Merchant category 'crypto' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+157,45106,50.8,7,0.3363,0.4589,purchase,retail,RU,0,0.2387190324170513,0,Country signal is associated with higher synthetic-demo risk
+961,11796,405.54,7,0.2282,0.0632,withdrawal,electronics,FR,0,0.23786663815245107,0,Transaction amount is high for this batch; Transaction type 'withdrawal' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+2530,30514,165.76,12,0.1266,0.1106,transfer,travel,NL,0,0.2365216785770165,0,Transaction type 'transfer' is higher risk in the demo data
+1125,37218,35.07,19,0.7435,0.2421,purchase,grocery,DE,0,0.23418075495086224,0,Elevated device risk score
+436,23147,39.55,20,0.0048,0.4683,purchase,retail,CN,0,0.23335370724618468,0,Country signal is associated with higher synthetic-demo risk
+3060,92065,36.42,13,0.6993,0.2664,purchase,retail,DE,0,0.23269402737289094,0,Elevated device risk score
+1783,53479,45.49,18,0.1756,0.204,transfer,gaming,DE,0,0.23117148203855056,0,Transaction type 'transfer' is higher risk in the demo data
+517,33048,59.17,17,0.0477,0.3947,withdrawal,travel,FR,0,0.22922468955028572,0,Transaction type 'withdrawal' is higher risk in the demo data
+2672,33828,252.01,9,0.2648,0.3448,purchase,travel,FR,0,0.2278583917772239,0,No strong rule-based risk drivers identified
+3129,22698,247.68,16,0.1892,0.4835,purchase,grocery,FR,0,0.22608504304870167,0,No strong rule-based risk drivers identified
+1068,87663,77.69,15,0.383,0.4028,purchase,electronics,DE,1,0.22577764455015747,0,Merchant category 'electronics' is higher risk in the demo data
+1746,94082,30.63,4,0.5046,0.1719,purchase,crypto,DE,0,0.224725224334079,0,Transaction occurred during unusual hours; Merchant category 'crypto' is higher risk in the demo data
+1354,51469,80.88,7,0.0534,0.3843,purchase,gaming,US,0,0.22286295232149683,0,No strong rule-based risk drivers identified
+922,96998,19.85,7,0.4317,0.1443,withdrawal,gaming,NL,0,0.2211388665637593,0,Transaction type 'withdrawal' is higher risk in the demo data
+3238,16174,86.79,22,0.1063,0.1607,transfer,gaming,FR,0,0.21817337883644777,0,Transaction type 'transfer' is higher risk in the demo data
+2479,92077,241.55,13,0.0809,0.4935,purchase,retail,US,0,0.21539457607994636,0,No strong rule-based risk drivers identified
+3342,12350,59.08,7,0.0262,0.326,transfer,retail,US,0,0.2129682796258104,0,Transaction type 'transfer' is higher risk in the demo data
+246,90202,66.29,22,0.2833,0.3649,purchase,grocery,GB,0,0.21207839794295302,0,No strong rule-based risk drivers identified
+2975,99036,66.72,12,0.178,0.3294,transfer,travel,DE,0,0.20885392765448244,0,Transaction type 'transfer' is higher risk in the demo data
+780,71758,126.78,9,0.3698,0.2531,purchase,crypto,CN,0,0.20800333377191363,0,Merchant category 'crypto' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+1143,74656,22.63,6,0.4837,0.3056,purchase,travel,DE,0,0.20781073010397427,0,No strong rule-based risk drivers identified
+2863,28107,53.21,1,0.2411,0.1216,transfer,travel,DE,0,0.20674377821721934,0,Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+1976,91212,59.83,11,0.4391,0.1476,purchase,gaming,GB,0,0.206690991933277,0,No strong rule-based risk drivers identified
+1915,37179,200.31,16,0.4628,0.2685,purchase,grocery,DE,0,0.2060327724209296,0,No strong rule-based risk drivers identified
+1503,66854,105.22,17,0.3931,0.1264,purchase,crypto,CN,0,0.20147072963773638,0,Merchant category 'crypto' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+3115,60726,74.75,21,0.1176,0.2755,purchase,gaming,CN,0,0.20006468106075437,0,Country signal is associated with higher synthetic-demo risk
+2546,29036,60.79,6,0.3541,0.0917,withdrawal,electronics,NL,0,0.19907898706089427,0,Transaction type 'withdrawal' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+3473,47502,53.15,22,0.4149,0.2834,purchase,crypto,DE,0,0.197922665926427,0,Merchant category 'crypto' is higher risk in the demo data
+2019,28899,74.61,20,0.5644,0.1283,withdrawal,grocery,DE,0,0.19758287537736086,0,Transaction type 'withdrawal' is higher risk in the demo data
+2531,93873,106.14,22,0.2337,0.5085,purchase,retail,DE,0,0.19726136765886096,0,No strong rule-based risk drivers identified
+459,27987,33.24,14,0.569,0.0789,withdrawal,retail,NL,0,0.19660211848374626,0,Transaction type 'withdrawal' is higher risk in the demo data
+3445,35685,45.4,3,0.1222,0.2366,purchase,electronics,DE,0,0.19400028433528835,0,Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data
+216,72592,44.06,23,0.0603,0.1841,transfer,retail,US,0,0.19228313044578732,0,Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+2144,22140,140.73,14,0.1837,0.0818,transfer,gaming,DE,0,0.19011711800005743,0,Transaction type 'transfer' is higher risk in the demo data
+1874,15904,93.47,16,0.0348,0.2184,transfer,gaming,DE,0,0.18927817190930224,0,Transaction type 'transfer' is higher risk in the demo data
+1671,67493,286.79,23,0.1552,0.1572,purchase,retail,NL,0,0.18770460296843663,0,Transaction amount is high for this batch; Transaction occurred during unusual hours
+1950,55939,171.33,16,0.2438,0.123,withdrawal,gaming,DE,0,0.18770457500764678,0,Transaction type 'withdrawal' is higher risk in the demo data
+2468,26875,81.42,9,0.1811,0.3999,purchase,travel,FR,0,0.1864321148709816,0,No strong rule-based risk drivers identified
+3235,81065,133.71,13,0.2626,0.1981,withdrawal,retail,NL,0,0.18586399645679286,0,Transaction type 'withdrawal' is higher risk in the demo data
+3402,95401,233.6,12,0.1327,0.3361,purchase,grocery,RU,0,0.18527202953732516,0,Country signal is associated with higher synthetic-demo risk
+3228,22068,57.54,19,0.2136,0.1259,transfer,retail,FR,0,0.18307471624486144,0,Transaction type 'transfer' is higher risk in the demo data
+3264,28031,11.99,6,0.466,0.2772,refund,grocery,CN,0,0.18190575694456196,0,Country signal is associated with higher synthetic-demo risk
+2003,13670,85.1,9,0.4013,0.2404,purchase,grocery,RU,0,0.1807932279259525,0,Country signal is associated with higher synthetic-demo risk
+1594,23957,400.85,15,0.0257,0.1498,transfer,travel,GB,0,0.1807145759249463,0,Transaction amount is high for this batch; Transaction type 'transfer' is higher risk in the demo data
+2521,11576,33.43,18,0.135,0.1391,purchase,crypto,US,0,0.1771719181245008,0,Merchant category 'crypto' is higher risk in the demo data
+2239,39946,143.53,17,0.1294,0.4443,purchase,retail,NL,0,0.17630224924362717,0,No strong rule-based risk drivers identified
+1931,25889,108.63,9,0.3,0.1231,refund,electronics,NL,0,0.17555753878162886,0,Merchant category 'electronics' is higher risk in the demo data
+3408,88846,8.54,18,0.1784,0.5356,purchase,travel,GB,0,0.1742855721296471,0,No strong rule-based risk drivers identified
+297,52629,668.99,7,0.3035,0.3168,purchase,grocery,GB,0,0.17191781277543233,0,Transaction amount is high for this batch
+3450,65446,155.76,12,0.3554,0.1249,transfer,grocery,DE,0,0.16989912179777159,0,Transaction type 'transfer' is higher risk in the demo data
+2400,41597,72.89,14,0.4658,0.1008,purchase,grocery,RU,0,0.1688446583724927,0,Country signal is associated with higher synthetic-demo risk
+3262,29104,37.95,20,0.092,0.6202,withdrawal,grocery,DE,0,0.1685456550101658,0,Elevated IP risk score; Transaction type 'withdrawal' is higher risk in the demo data
+2324,62281,8.65,10,0.0223,0.4205,purchase,retail,CN,0,0.1664567920660594,0,Country signal is associated with higher synthetic-demo risk
+869,59553,87.69,13,0.3609,0.3206,purchase,electronics,FR,0,0.16632633618396336,0,Merchant category 'electronics' is higher risk in the demo data
+2788,71323,5.54,13,0.3385,0.4679,purchase,retail,NL,0,0.16414385803546735,0,No strong rule-based risk drivers identified
+1203,23513,4.92,9,0.2049,0.574,purchase,grocery,NL,0,0.16170936328215205,0,No strong rule-based risk drivers identified
+3471,38045,18.54,15,0.0126,0.1495,withdrawal,crypto,DE,0,0.16143417191182607,0,Transaction type 'withdrawal' is higher risk in the demo data; Merchant category 'crypto' is higher risk in the demo data
+263,40611,39.54,17,0.05,0.1799,withdrawal,gaming,FR,0,0.15991571373393737,0,Transaction type 'withdrawal' is higher risk in the demo data
+1091,22749,59.34,22,0.3168,0.1642,refund,grocery,NL,0,0.15983273766322098,0,No strong rule-based risk drivers identified
+39,87867,14.14,2,0.0735,0.2186,purchase,electronics,NL,0,0.15830175843723968,0,Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data
+2213,17061,64.3,18,0.0714,0.4673,refund,grocery,NL,0,0.15788543102033525,0,No strong rule-based risk drivers identified
+1961,21356,70.79,17,0.1631,0.1946,purchase,gaming,US,0,0.1574869115242997,0,No strong rule-based risk drivers identified
+1287,22835,20.59,21,0.368,0.0108,withdrawal,retail,US,0,0.1560257971143991,0,Transaction type 'withdrawal' is higher risk in the demo data
+3272,51176,51.0,12,0.0824,0.5261,purchase,retail,NL,0,0.15570232102783135,0,No strong rule-based risk drivers identified
+1518,12539,375.9,20,0.1854,0.3553,purchase,retail,DE,0,0.15506037776972315,0,Transaction amount is high for this batch
+2383,75497,39.63,8,0.0449,0.6064,purchase,grocery,RU,0,0.15320855835761957,0,Elevated IP risk score; Country signal is associated with higher synthetic-demo risk
+2993,76658,7.63,19,0.1928,0.3699,purchase,electronics,DE,0,0.15181994325332718,0,Merchant category 'electronics' is higher risk in the demo data
+417,35516,21.27,16,0.2379,0.2531,transfer,gaming,DE,0,0.15143652445065126,0,Transaction type 'transfer' is higher risk in the demo data
+598,60154,63.02,4,0.0149,0.3799,transfer,grocery,DE,0,0.1509181768552195,0,Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+2675,88430,48.3,7,0.0416,0.3836,purchase,electronics,GB,0,0.14983057193769042,0,Merchant category 'electronics' is higher risk in the demo data
+175,48305,79.78,10,0.3301,0.3449,purchase,retail,FR,0,0.1495484814326398,0,No strong rule-based risk drivers identified
+3416,17586,309.28,13,0.1382,0.0444,transfer,retail,DE,0,0.14830438690417236,0,Transaction amount is high for this batch; Transaction type 'transfer' is higher risk in the demo data
+1299,26667,25.87,19,0.3279,0.1996,refund,travel,US,0,0.1480969068186907,0,No strong rule-based risk drivers identified
+1699,73711,6.64,16,0.2276,0.6823,purchase,grocery,DE,0,0.1469272480861702,0,Elevated IP risk score
+1387,12169,170.1,8,0.1524,0.0683,transfer,retail,DE,0,0.145283719750853,0,Transaction type 'transfer' is higher risk in the demo data
+750,55993,26.53,6,0.0095,0.5468,purchase,grocery,US,0,0.14518107695050345,0,No strong rule-based risk drivers identified
+3265,74733,469.63,19,0.2614,0.1414,purchase,electronics,GB,0,0.14513063377852997,0,Transaction amount is high for this batch; Merchant category 'electronics' is higher risk in the demo data
+2014,39986,103.61,9,0.0554,0.2896,purchase,grocery,RU,0,0.14483067312196804,0,Country signal is associated with higher synthetic-demo risk
+2156,29100,119.4,20,0.3548,0.3658,purchase,grocery,DE,0,0.14425952129184427,0,No strong rule-based risk drivers identified
+673,20850,6.63,6,0.2152,0.3859,purchase,electronics,GB,0,0.14416074039210008,0,Merchant category 'electronics' is higher risk in the demo data
+1775,71308,51.81,17,0.0485,0.3582,purchase,travel,FR,0,0.14305720780496,0,No strong rule-based risk drivers identified
+2941,29725,249.38,16,0.1419,0.1266,transfer,retail,DE,0,0.14268519295166532,0,Transaction type 'transfer' is higher risk in the demo data
+1062,80619,53.38,19,0.1812,0.2064,withdrawal,electronics,FR,0,0.14259231795703078,0,Transaction type 'withdrawal' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+935,91780,25.07,13,0.3859,0.2828,withdrawal,retail,DE,0,0.1425676713777035,0,Transaction type 'withdrawal' is higher risk in the demo data
+221,63875,65.41,20,0.566,0.1181,purchase,retail,DE,0,0.14192321988438714,0,No strong rule-based risk drivers identified
+333,44241,22.08,16,0.0217,0.2868,transfer,retail,GB,0,0.14102824649474882,0,Transaction type 'transfer' is higher risk in the demo data
+2345,45865,33.1,20,0.2583,0.1956,transfer,travel,FR,0,0.13906298931514433,0,Transaction type 'transfer' is higher risk in the demo data
+937,49583,114.11,4,0.3139,0.0193,purchase,electronics,NL,0,0.1376723963797727,0,Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data
+1186,73314,30.6,15,0.2954,0.1905,purchase,gaming,FR,0,0.1368892553614722,0,No strong rule-based risk drivers identified
+2995,78559,15.06,22,0.3762,0.203,purchase,retail,RU,0,0.1363717914782769,0,Country signal is associated with higher synthetic-demo risk
+3336,42768,69.61,17,0.1308,0.1926,transfer,retail,FR,0,0.13567232572620225,0,Transaction type 'transfer' is higher risk in the demo data
+822,80221,59.3,12,0.1737,0.4369,purchase,grocery,GB,0,0.13554323121215173,0,No strong rule-based risk drivers identified
+3035,68215,314.02,4,0.2701,0.109,purchase,retail,FR,0,0.13540074090995954,0,Transaction amount is high for this batch; Transaction occurred during unusual hours
+440,63307,69.43,17,0.2322,0.0063,transfer,retail,FR,0,0.13500758233032864,0,Transaction type 'transfer' is higher risk in the demo data
+2799,68234,48.58,11,0.0386,0.3842,purchase,retail,RU,0,0.13494176167343858,0,Country signal is associated with higher synthetic-demo risk
+1891,46808,79.18,6,0.5587,0.0711,purchase,retail,GB,0,0.1344260402834916,0,No strong rule-based risk drivers identified
+2200,79072,119.06,18,0.0417,0.1293,purchase,electronics,RU,0,0.1340284750725383,0,Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+2101,10511,28.33,20,0.1821,0.4475,purchase,retail,DE,0,0.13387635976233975,0,No strong rule-based risk drivers identified
+2821,39280,42.78,15,0.0148,0.3714,purchase,electronics,GB,0,0.13337880139034433,0,Merchant category 'electronics' is higher risk in the demo data
+1662,56489,75.45,15,0.3779,0.218,purchase,travel,NL,0,0.13320419075103723,0,No strong rule-based risk drivers identified
+2679,91083,50.76,19,0.1616,0.3268,purchase,retail,CN,0,0.13320324480544354,0,Country signal is associated with higher synthetic-demo risk
+2110,23685,142.16,8,0.1462,0.3723,purchase,grocery,FR,0,0.13295356228241267,0,No strong rule-based risk drivers identified
+1698,93053,38.89,19,0.0706,0.1086,transfer,electronics,GB,0,0.13263322300406982,0,Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+3108,43171,79.17,17,0.2212,0.3171,purchase,retail,FR,0,0.13124704953188285,0,No strong rule-based risk drivers identified
+929,13684,29.93,11,0.1536,0.0738,withdrawal,gaming,GB,0,0.13077814019834746,0,Transaction type 'withdrawal' is higher risk in the demo data
+13,54251,137.78,2,0.0519,0.0467,transfer,gaming,DE,0,0.130590576142415,0,Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+3103,41403,41.02,1,0.2474,0.0564,purchase,travel,US,0,0.1304509334732885,0,Transaction occurred during unusual hours
+3155,86223,65.32,18,0.0864,0.4253,transfer,grocery,FR,0,0.13036050146050285,0,Transaction type 'transfer' is higher risk in the demo data
+1451,39683,130.64,15,0.2014,0.2359,purchase,electronics,NL,0,0.1300202111887172,0,Merchant category 'electronics' is higher risk in the demo data
+1265,41208,16.8,10,0.1863,0.187,transfer,travel,US,0,0.12943037717622896,0,Transaction type 'transfer' is higher risk in the demo data
+3168,19334,288.33,10,0.0658,0.342,purchase,grocery,CN,0,0.12937988573514284,0,Transaction amount is high for this batch; Country signal is associated with higher synthetic-demo risk
+1351,20735,171.68,14,0.2247,0.2354,withdrawal,grocery,DE,0,0.1286324298151842,0,Transaction type 'withdrawal' is higher risk in the demo data
+3181,25151,53.54,8,0.1664,0.4011,purchase,grocery,FR,0,0.1285706380877401,0,No strong rule-based risk drivers identified
+760,70794,96.98,20,0.3797,0.2338,purchase,electronics,DE,0,0.1285103089914194,0,Merchant category 'electronics' is higher risk in the demo data
+2787,73219,73.0,14,0.1538,0.246,purchase,retail,RU,0,0.12732611514537281,0,Country signal is associated with higher synthetic-demo risk
+1285,82496,51.0,7,0.121,0.2949,withdrawal,travel,DE,0,0.12730229220837533,0,Transaction type 'withdrawal' is higher risk in the demo data
+1558,60145,13.43,7,0.0652,0.0746,transfer,retail,RU,0,0.12509242023784964,0,Transaction type 'transfer' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+2735,72416,20.78,5,0.4099,0.0017,purchase,gaming,DE,0,0.12441666826876005,0,Transaction occurred during unusual hours
+315,50916,98.66,15,0.1482,0.4053,purchase,electronics,DE,0,0.1234876502083043,0,Merchant category 'electronics' is higher risk in the demo data
+1198,23213,151.94,21,0.2281,0.0098,purchase,gaming,US,0,0.12337323533821429,0,No strong rule-based risk drivers identified
+682,65541,16.5,8,0.016,0.3454,purchase,gaming,FR,0,0.12330328622141237,0,No strong rule-based risk drivers identified
+784,46976,183.26,6,0.0528,0.1677,purchase,retail,NL,0,0.12277742000646649,0,No strong rule-based risk drivers identified
+1882,46220,42.26,12,0.0749,0.1364,transfer,retail,NL,0,0.12274414325831202,0,Transaction type 'transfer' is higher risk in the demo data
+1129,24034,22.42,13,0.0971,0.0321,transfer,gaming,NL,0,0.12272432506572348,0,Transaction type 'transfer' is higher risk in the demo data
+1720,90627,92.93,8,0.1772,0.0855,withdrawal,retail,NL,0,0.12254756284620406,0,Transaction type 'withdrawal' is higher risk in the demo data
+2217,95313,66.8,15,0.056,0.5569,purchase,retail,DE,0,0.12241879758691052,0,No strong rule-based risk drivers identified
+3348,46007,51.59,4,0.2505,0.0805,withdrawal,travel,DE,0,0.1195566653080201,0,Transaction occurred during unusual hours; Transaction type 'withdrawal' is higher risk in the demo data
+3205,96369,7.48,13,0.1692,0.1985,transfer,travel,NL,0,0.11938526954688626,0,Transaction type 'transfer' is higher risk in the demo data
+556,72528,112.7,15,0.4524,0.1155,purchase,retail,GB,0,0.11933956829087551,0,No strong rule-based risk drivers identified
+2069,90865,48.42,10,0.2908,0.0871,refund,gaming,DE,0,0.11928023713552079,0,No strong rule-based risk drivers identified
+3412,50518,46.98,14,0.5256,0.0366,purchase,travel,FR,0,0.11840346897448004,0,No strong rule-based risk drivers identified
+2580,72687,28.81,14,0.1282,0.0762,transfer,gaming,GB,0,0.1177887572618761,0,Transaction type 'transfer' is higher risk in the demo data
+127,58969,57.73,14,0.222,0.1107,refund,grocery,RU,0,0.11533927488522598,0,Country signal is associated with higher synthetic-demo risk
+2300,85954,189.55,8,0.1036,0.3084,purchase,electronics,DE,0,0.11496237916631692,0,Merchant category 'electronics' is higher risk in the demo data
+2834,49191,111.01,15,0.1918,0.0188,transfer,grocery,US,0,0.11463370251992541,0,Transaction type 'transfer' is higher risk in the demo data
+1088,72714,13.34,8,0.3181,0.0653,transfer,electronics,US,0,0.11385340567046716,0,Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+671,95820,418.95,14,0.1046,0.2749,purchase,electronics,DE,0,0.11367987353530068,0,Transaction amount is high for this batch; Merchant category 'electronics' is higher risk in the demo data
+1819,33825,34.32,0,0.0895,0.214,purchase,electronics,DE,0,0.1128281338940749,0,Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data
+1866,63868,12.19,22,0.258,0.1409,transfer,travel,DE,0,0.11210729645642163,0,Transaction type 'transfer' is higher risk in the demo data
+2739,71107,36.48,14,0.279,0.3883,purchase,grocery,US,0,0.11178960653514802,0,No strong rule-based risk drivers identified
+1548,81190,90.75,22,0.1603,0.0397,transfer,grocery,FR,0,0.1112705611462439,0,Transaction type 'transfer' is higher risk in the demo data
+694,25460,132.09,12,0.0393,0.4245,purchase,grocery,GB,0,0.11111581022504341,0,No strong rule-based risk drivers identified
+831,45960,53.32,17,0.1774,0.1851,purchase,electronics,US,0,0.10979347271432961,0,Merchant category 'electronics' is higher risk in the demo data
+1348,96009,38.03,6,0.01,0.3466,purchase,crypto,DE,0,0.10887644767522126,0,Merchant category 'crypto' is higher risk in the demo data
+1083,89013,20.31,16,0.1486,0.2817,withdrawal,retail,FR,0,0.10839819232777731,0,Transaction type 'withdrawal' is higher risk in the demo data
+1520,49688,68.54,8,0.3691,0.1035,refund,grocery,FR,0,0.1081242888769809,0,No strong rule-based risk drivers identified
+2842,98566,81.08,10,0.1505,0.2177,transfer,grocery,FR,0,0.1076755250637559,0,Transaction type 'transfer' is higher risk in the demo data
+1642,54246,66.11,23,0.0159,0.1658,purchase,retail,CN,0,0.10756810059998616,0,Transaction occurred during unusual hours; Country signal is associated with higher synthetic-demo risk
+3006,45320,168.87,13,0.3894,0.2327,purchase,grocery,FR,0,0.10710872946563699,0,No strong rule-based risk drivers identified
+1181,17158,13.11,9,0.0214,0.5861,purchase,retail,DE,0,0.10691488927129586,0,No strong rule-based risk drivers identified
+1701,95203,249.9,17,0.1029,0.0045,purchase,retail,CN,0,0.10668198026968902,0,Country signal is associated with higher synthetic-demo risk
+3292,69005,36.03,12,0.0562,0.3855,purchase,crypto,FR,0,0.10638910543818464,0,Merchant category 'crypto' is higher risk in the demo data
+2,76551,30.28,21,0.2972,0.2655,purchase,travel,CN,0,0.10633221152350869,0,Country signal is associated with higher synthetic-demo risk
+2263,82109,220.03,13,0.2676,0.0766,purchase,electronics,CN,0,0.10571828491990283,0,Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+549,14817,86.13,15,0.2973,0.452,purchase,grocery,DE,0,0.1054507624462627,0,No strong rule-based risk drivers identified
+2127,36375,74.92,9,0.0696,0.1591,purchase,retail,RU,0,0.1049602844272035,0,Country signal is associated with higher synthetic-demo risk
+43,40630,64.01,18,0.0287,0.2029,purchase,electronics,US,0,0.1048498630615098,0,Merchant category 'electronics' is higher risk in the demo data
+1128,21929,36.16,11,0.1572,0.4252,purchase,travel,DE,0,0.10479619898952651,0,No strong rule-based risk drivers identified
+1215,72909,1960.24,9,0.1788,0.0168,purchase,retail,FR,0,0.10471470909585794,0,Transaction amount is high for this batch
+3165,46066,168.4,23,0.0546,0.0771,purchase,grocery,DE,0,0.10441338040297245,0,Transaction occurred during unusual hours
+197,47590,11.1,12,0.1481,0.4158,purchase,retail,US,0,0.10297205153124514,0,No strong rule-based risk drivers identified
+168,84724,167.03,6,0.2441,0.161,purchase,retail,GB,0,0.10288521066103047,0,No strong rule-based risk drivers identified
+445,40940,67.26,13,0.0786,0.1548,withdrawal,retail,GB,0,0.10232405629262659,0,Transaction type 'withdrawal' is higher risk in the demo data
+2781,21810,17.86,12,0.363,0.1131,purchase,gaming,GB,0,0.10197340368278832,0,No strong rule-based risk drivers identified
+2746,24010,66.58,14,0.0627,0.2616,purchase,retail,RU,0,0.10145067744093472,0,Country signal is associated with higher synthetic-demo risk
+570,96686,35.98,6,0.489,0.1272,purchase,grocery,FR,0,0.1005554799204608,0,No strong rule-based risk drivers identified
+1604,95388,63.99,17,0.0096,0.2325,purchase,electronics,FR,0,0.10040476758101559,0,Merchant category 'electronics' is higher risk in the demo data
+1289,57144,48.15,10,0.4619,0.0545,refund,grocery,FR,0,0.10007349923839765,0,No strong rule-based risk drivers identified
+2459,87819,66.45,23,0.2449,0.0025,purchase,retail,FR,0,0.10002394209375895,0,Transaction occurred during unusual hours
+2645,81147,26.78,9,0.1405,0.0689,refund,travel,RU,0,0.09960366807346555,0,Country signal is associated with higher synthetic-demo risk
+2839,77501,7.33,12,0.1125,0.0169,transfer,travel,CN,0,0.099030299951036,0,Transaction type 'transfer' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+1865,81404,33.18,5,0.1842,0.1729,purchase,electronics,DE,0,0.09858951267110036,0,Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data
+22,89746,32.97,14,0.0667,0.4673,purchase,electronics,DE,0,0.09856875738129296,0,Merchant category 'electronics' is higher risk in the demo data
+3074,27522,95.82,6,0.1133,0.1097,purchase,travel,GB,0,0.09777338770664491,0,No strong rule-based risk drivers identified
+2847,50836,36.2,15,0.1391,0.3975,purchase,travel,DE,0,0.0977186274722605,0,No strong rule-based risk drivers identified
+2977,38498,18.83,8,0.1543,0.2023,transfer,retail,GB,0,0.09742593873805323,0,Transaction type 'transfer' is higher risk in the demo data
+3153,82982,31.3,17,0.3386,0.3403,purchase,retail,DE,0,0.09723105996816518,0,No strong rule-based risk drivers identified
+1477,89719,36.58,16,0.4206,0.1411,purchase,travel,FR,0,0.09684124702455273,0,No strong rule-based risk drivers identified
+1575,29523,1068.04,9,0.2902,0.1574,purchase,electronics,DE,0,0.09682647593266898,0,Transaction amount is high for this batch; Merchant category 'electronics' is higher risk in the demo data
+2330,39789,37.15,10,0.0405,0.3213,purchase,gaming,US,0,0.09681237800189889,0,No strong rule-based risk drivers identified
+1279,35317,232.81,12,0.1433,0.2321,purchase,retail,US,0,0.0964282579941113,0,No strong rule-based risk drivers identified
+1247,15322,70.76,10,0.2461,0.4734,purchase,grocery,DE,0,0.09629056926583111,0,No strong rule-based risk drivers identified
+2486,13259,249.13,5,0.1518,0.0279,purchase,electronics,DE,0,0.09592021541481525,0,Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data
+541,12325,41.95,19,0.1754,0.0792,transfer,retail,DE,0,0.09586338718716209,0,Transaction type 'transfer' is higher risk in the demo data
+1959,97770,38.61,20,0.1911,0.1509,purchase,gaming,DE,0,0.0955512398962125,0,No strong rule-based risk drivers identified
+2956,59207,12.87,6,0.134,0.1615,transfer,retail,NL,0,0.09543594375011488,0,Transaction type 'transfer' is higher risk in the demo data
+785,97744,32.48,9,0.0761,0.0898,transfer,travel,NL,0,0.09537924573449032,0,Transaction type 'transfer' is higher risk in the demo data
+817,44722,48.83,12,0.1822,0.3897,purchase,retail,DE,0,0.09537182540491751,0,No strong rule-based risk drivers identified
+1250,22169,125.98,8,0.2922,0.1974,purchase,electronics,DE,0,0.09494909348427859,0,Merchant category 'electronics' is higher risk in the demo data
+3396,25611,26.33,9,0.1119,0.3962,purchase,travel,FR,0,0.09493877905644608,0,No strong rule-based risk drivers identified
+860,31734,29.75,14,0.0505,0.4721,purchase,electronics,DE,0,0.09459622769618076,0,Merchant category 'electronics' is higher risk in the demo data
+3132,74732,4.2,19,0.2334,0.2566,transfer,grocery,US,0,0.09445316912218218,0,Transaction type 'transfer' is higher risk in the demo data
+1258,21367,56.52,17,0.3795,0.0242,purchase,retail,US,0,0.09386524949344247,0,No strong rule-based risk drivers identified
+1108,82738,163.91,8,0.2974,0.148,purchase,retail,NL,0,0.0932262336079691,0,No strong rule-based risk drivers identified
+369,29013,29.85,7,0.4325,0.3136,purchase,travel,DE,0,0.09320807653539787,0,No strong rule-based risk drivers identified
+3147,11666,27.44,13,0.4899,0.1342,purchase,travel,DE,0,0.09310660961425672,0,No strong rule-based risk drivers identified
+2292,20962,161.94,11,0.2426,0.0103,purchase,electronics,NL,0,0.09243275992622287,0,Merchant category 'electronics' is higher risk in the demo data
+1847,75023,184.94,16,0.099,0.0853,purchase,electronics,GB,0,0.09197957342739385,0,Merchant category 'electronics' is higher risk in the demo data
+1990,55292,27.78,17,0.0889,0.1438,refund,gaming,FR,0,0.09190966572922242,0,No strong rule-based risk drivers identified
+364,76182,52.66,12,0.0973,0.4152,purchase,retail,DE,0,0.09179392329654128,0,No strong rule-based risk drivers identified
+1542,24171,37.38,17,0.0401,0.2485,refund,electronics,FR,0,0.09148138716457295,0,Merchant category 'electronics' is higher risk in the demo data
+2309,93575,128.38,9,0.0279,0.0115,refund,gaming,DE,0,0.09142763906939838,0,No strong rule-based risk drivers identified
+371,59448,43.3,16,0.0576,0.3205,purchase,retail,GB,0,0.09119285074632044,0,No strong rule-based risk drivers identified
+2869,76463,11.49,19,0.1478,0.2549,withdrawal,travel,DE,0,0.09093414144499552,0,Transaction type 'withdrawal' is higher risk in the demo data
+974,40307,74.1,15,0.227,0.0159,refund,grocery,GB,0,0.0909186798076561,0,No strong rule-based risk drivers identified
+3325,10610,50.28,15,0.3163,0.2376,purchase,electronics,GB,0,0.09052804672791294,0,Merchant category 'electronics' is higher risk in the demo data
+2009,93999,139.83,12,0.1535,0.0436,purchase,electronics,RU,0,0.09033813659729796,0,Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+1992,66494,46.12,10,0.1347,0.3265,purchase,travel,FR,0,0.08948017962264322,0,No strong rule-based risk drivers identified
+1684,88859,49.42,6,0.1617,0.1415,transfer,grocery,NL,0,0.08924364982096611,0,Transaction type 'transfer' is higher risk in the demo data
+2283,44687,38.36,11,0.165,0.0612,transfer,retail,NL,0,0.08912623740023981,0,Transaction type 'transfer' is higher risk in the demo data
+1821,64146,71.17,13,0.0744,0.2281,withdrawal,grocery,GB,0,0.08910211084110793,0,Transaction type 'withdrawal' is higher risk in the demo data
+3130,43242,39.14,10,0.2898,0.067,purchase,gaming,GB,0,0.08838218088875639,0,No strong rule-based risk drivers identified
+1648,27969,47.18,8,0.1205,0.1655,purchase,gaming,FR,0,0.08761872897503217,0,No strong rule-based risk drivers identified
+2962,38683,49.08,21,0.1711,0.1989,purchase,travel,GB,0,0.08711466161055718,0,No strong rule-based risk drivers identified
+1892,49223,54.38,6,0.1185,0.0381,refund,travel,FR,0,0.08614086854185919,0,No strong rule-based risk drivers identified
+504,77813,122.94,20,0.0328,0.1984,withdrawal,retail,DE,0,0.08603667099404473,0,Transaction type 'withdrawal' is higher risk in the demo data
+3429,95535,244.48,13,0.0487,0.0372,purchase,electronics,DE,0,0.0842615434919471,0,Merchant category 'electronics' is higher risk in the demo data
+1066,27401,16.47,16,0.5076,0.1791,purchase,grocery,DE,0,0.08407854940686567,0,No strong rule-based risk drivers identified
+3375,19692,29.01,19,0.3629,0.0803,refund,grocery,US,0,0.08376171163882233,0,No strong rule-based risk drivers identified
+1661,85979,8.78,11,0.3456,0.3705,purchase,retail,DE,0,0.0835666932080226,0,No strong rule-based risk drivers identified
+1813,83035,26.27,8,0.1946,0.1325,withdrawal,travel,US,0,0.08217691625518327,0,Transaction type 'withdrawal' is higher risk in the demo data
+3149,69729,16.52,12,0.1908,0.0718,purchase,crypto,US,0,0.08192232567801472,0,Merchant category 'crypto' is higher risk in the demo data
+2576,68777,70.52,10,0.0817,0.2141,purchase,travel,NL,0,0.08180373579209012,0,No strong rule-based risk drivers identified
+1268,27031,36.41,21,0.2522,0.1731,refund,retail,DE,0,0.0813087839422819,0,No strong rule-based risk drivers identified
+1000,78832,7.34,16,0.0749,0.3361,withdrawal,grocery,FR,0,0.08128530974386626,0,Transaction type 'withdrawal' is higher risk in the demo data
+2878,44168,41.89,15,0.2691,0.2455,purchase,electronics,GB,0,0.08112893786315352,0,Merchant category 'electronics' is higher risk in the demo data
+715,41481,72.98,12,0.2735,0.0603,purchase,gaming,DE,0,0.08106921627570514,0,No strong rule-based risk drivers identified
+2809,66814,30.02,21,0.0096,0.2052,purchase,retail,DE,0,0.08094051894318798,0,No strong rule-based risk drivers identified
+278,92539,120.7,11,0.1471,0.2519,purchase,electronics,DE,0,0.08055773497994159,0,Merchant category 'electronics' is higher risk in the demo data
+2607,92151,63.45,9,0.2782,0.1776,purchase,retail,CN,0,0.08017264229160022,0,Country signal is associated with higher synthetic-demo risk
+756,22297,22.5,1,0.0643,0.0802,purchase,electronics,NL,0,0.08007676512847371,0,Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data
+952,73867,30.19,2,0.0168,0.0911,transfer,travel,DE,0,0.08005351656103074,0,Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+1133,35613,59.51,6,0.2019,0.0425,withdrawal,retail,DE,0,0.07960980744821956,0,Transaction type 'withdrawal' is higher risk in the demo data
+188,34670,63.44,1,0.1706,0.0733,purchase,grocery,DE,0,0.07923069453039171,0,Transaction occurred during unusual hours
+1666,34963,52.06,20,0.1626,0.3029,purchase,travel,DE,0,0.07841739348199034,0,No strong rule-based risk drivers identified
+2274,60259,41.65,19,0.0165,0.1086,withdrawal,grocery,GB,0,0.07810631373499102,0,Transaction type 'withdrawal' is higher risk in the demo data
+730,16379,63.15,19,0.3418,0.2174,purchase,retail,DE,0,0.07798553341304415,0,No strong rule-based risk drivers identified
+702,40592,103.74,20,0.1196,0.2322,purchase,grocery,FR,0,0.07762443692537606,0,No strong rule-based risk drivers identified
+3330,75459,79.49,13,0.0571,0.3363,purchase,retail,DE,0,0.07759077619899342,0,No strong rule-based risk drivers identified
+2861,38637,91.18,9,0.2413,0.0228,purchase,electronics,US,0,0.077178963123678,0,Merchant category 'electronics' is higher risk in the demo data
+1344,57943,67.37,8,0.1978,0.2178,purchase,retail,FR,0,0.0768729652733125,0,No strong rule-based risk drivers identified
+706,15393,30.26,17,0.1071,0.0886,purchase,crypto,DE,0,0.07682848017738896,0,Merchant category 'crypto' is higher risk in the demo data
+927,41935,26.65,8,0.3029,0.2954,purchase,electronics,FR,0,0.07681951398793493,0,Merchant category 'electronics' is higher risk in the demo data
+1033,84924,33.43,16,0.2615,0.0582,transfer,travel,DE,0,0.07679789373184333,0,Transaction type 'transfer' is higher risk in the demo data
+1241,17537,80.14,9,0.3051,0.0979,purchase,retail,CN,0,0.07653092477965487,0,Country signal is associated with higher synthetic-demo risk
+1404,68779,35.97,19,0.1627,0.0398,purchase,gaming,FR,0,0.07631129507751012,0,No strong rule-based risk drivers identified
+2928,97186,39.07,11,0.0897,0.2237,transfer,grocery,GB,0,0.07608662454594609,0,Transaction type 'transfer' is higher risk in the demo data
+3393,74801,57.19,22,0.049,0.0479,purchase,retail,NL,0,0.07591708658721964,0,No strong rule-based risk drivers identified
+2874,18476,47.54,13,0.0661,0.3663,purchase,retail,DE,0,0.07588833563028409,0,No strong rule-based risk drivers identified
+2357,17433,53.94,17,0.2029,0.1648,refund,grocery,NL,0,0.07441640951331156,0,No strong rule-based risk drivers identified
+350,99089,35.54,10,0.422,0.3002,purchase,retail,DE,0,0.07427757718780359,0,No strong rule-based risk drivers identified
+1633,56017,33.9,16,0.2536,0.0441,withdrawal,retail,NL,0,0.07399983764034114,0,Transaction type 'withdrawal' is higher risk in the demo data
+1380,64933,24.81,2,0.0096,0.1641,purchase,retail,DE,0,0.07388340077112997,0,Transaction occurred during unusual hours
+133,32323,81.59,13,0.0419,0.03,refund,electronics,DE,0,0.07281495668461484,0,Merchant category 'electronics' is higher risk in the demo data
+2460,32234,92.19,9,0.1924,0.0428,refund,retail,DE,0,0.07261168896350421,0,No strong rule-based risk drivers identified
+2032,26965,28.85,9,0.2047,0.2464,purchase,retail,RU,0,0.0722376507235777,0,Country signal is associated with higher synthetic-demo risk
+1689,89885,10.88,1,0.0154,0.0472,withdrawal,travel,GB,0,0.07162608026271179,0,Transaction occurred during unusual hours; Transaction type 'withdrawal' is higher risk in the demo data
+219,73187,50.27,20,0.0244,0.1174,purchase,electronics,GB,0,0.07155109183855152,0,Merchant category 'electronics' is higher risk in the demo data
+1524,79062,48.86,9,0.0561,0.1575,purchase,gaming,DE,0,0.0715376254605481,0,No strong rule-based risk drivers identified
+2669,68055,88.59,11,0.2763,0.0443,purchase,electronics,FR,0,0.07141515412552138,0,Merchant category 'electronics' is higher risk in the demo data
+3378,13162,12.92,21,0.2746,0.2744,purchase,retail,FR,0,0.07134755547935195,0,No strong rule-based risk drivers identified
+2932,21050,129.13,9,0.1295,0.1933,purchase,retail,FR,0,0.07109347932975914,0,No strong rule-based risk drivers identified
+2875,71896,377.4,4,0.122,0.0946,purchase,retail,DE,0,0.07082749813581317,0,Transaction amount is high for this batch; Transaction occurred during unusual hours
+71,95095,30.93,13,0.0837,0.2474,withdrawal,grocery,GB,0,0.07069472612843429,0,Transaction type 'withdrawal' is higher risk in the demo data
+2397,20211,55.94,8,0.2449,0.1475,refund,grocery,FR,0,0.07027646733657225,0,No strong rule-based risk drivers identified
+707,55228,86.81,8,0.3471,0.099,purchase,crypto,DE,0,0.07023292342097687,0,Merchant category 'crypto' is higher risk in the demo data
+2457,77103,113.12,16,0.1649,0.3805,purchase,grocery,DE,0,0.06980546745341724,0,No strong rule-based risk drivers identified
+729,82761,56.69,10,0.2947,0.2007,purchase,grocery,US,0,0.06980293922708232,0,No strong rule-based risk drivers identified
+1284,71324,17.14,19,0.1515,0.0918,withdrawal,grocery,NL,0,0.06931761001388463,0,Transaction type 'withdrawal' is higher risk in the demo data
+2500,42059,24.16,11,0.092,0.1733,withdrawal,electronics,FR,0,0.06903986065900564,0,Transaction type 'withdrawal' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+798,36280,18.57,18,0.4084,0.1837,purchase,retail,CN,0,0.0687777200421241,0,Country signal is associated with higher synthetic-demo risk
+1818,50303,13.57,10,0.1561,0.0555,transfer,electronics,DE,0,0.06863968923741957,0,Transaction type 'transfer' is higher risk in the demo data; Merchant category 'electronics' is higher risk in the demo data
+2634,14710,100.11,17,0.2378,0.1704,purchase,grocery,GB,0,0.06837023300758147,0,No strong rule-based risk drivers identified
+791,32741,601.36,11,0.0596,0.1176,withdrawal,grocery,DE,0,0.06836564002704648,0,Transaction amount is high for this batch; Transaction type 'withdrawal' is higher risk in the demo data
+3012,20456,46.33,16,0.3556,0.0585,purchase,electronics,GB,0,0.06769045070620162,0,Merchant category 'electronics' is higher risk in the demo data
+3460,26718,12.41,17,0.5114,0.0154,purchase,retail,GB,0,0.0673916124652741,0,No strong rule-based risk drivers identified
+177,19648,24.2,15,0.1383,0.4164,purchase,grocery,US,0,0.06697047239520382,0,No strong rule-based risk drivers identified
+3314,15898,8.98,19,0.33,0.247,purchase,retail,DE,0,0.06682810268662312,0,No strong rule-based risk drivers identified
+1606,10105,441.66,5,0.0705,0.1606,purchase,retail,DE,0,0.06647885880717225,0,Transaction amount is high for this batch; Transaction occurred during unusual hours
+1134,80361,11.91,16,0.2258,0.1672,purchase,electronics,NL,0,0.0659051594792773,0,Merchant category 'electronics' is higher risk in the demo data
+209,98024,64.39,6,0.3706,0.0514,purchase,retail,FR,0,0.06580035270208451,0,No strong rule-based risk drivers identified
+1445,50170,538.86,12,0.0222,0.3311,purchase,grocery,DE,0,0.06558028632408738,0,Transaction amount is high for this batch
+2026,61702,8.94,11,0.0289,0.458,purchase,grocery,US,0,0.06522216102385152,0,No strong rule-based risk drivers identified
+2624,87895,17.3,12,0.3499,0.1974,purchase,travel,US,0,0.06519359125168,0,No strong rule-based risk drivers identified
+986,72396,102.18,14,0.3414,0.1356,purchase,retail,FR,0,0.06499128645679834,0,No strong rule-based risk drivers identified
+1690,72868,54.26,16,0.3328,0.1065,purchase,retail,FR,0,0.06486030323937071,0,No strong rule-based risk drivers identified
+2877,39991,22.98,21,0.1443,0.2984,purchase,grocery,US,0,0.06473614446413249,0,No strong rule-based risk drivers identified
+1864,79650,44.36,19,0.3296,0.0243,purchase,retail,NL,0,0.06459705824703335,0,No strong rule-based risk drivers identified
+997,53204,49.16,9,0.1424,0.1827,purchase,electronics,GB,0,0.06420152447145472,0,Merchant category 'electronics' is higher risk in the demo data
+980,45250,30.01,3,0.1184,0.0311,purchase,retail,NL,0,0.06410092995159562,0,Transaction occurred during unusual hours
+3095,80761,30.08,9,0.3528,0.1216,refund,grocery,NL,0,0.06374075925802526,0,No strong rule-based risk drivers identified
+2519,16020,22.71,17,0.2092,0.1705,withdrawal,travel,FR,0,0.06333924661484933,0,Transaction type 'withdrawal' is higher risk in the demo data
+2670,56756,118.12,17,0.0524,0.195,purchase,retail,DE,0,0.06323170204372182,0,No strong rule-based risk drivers identified
+3061,77504,125.28,10,0.1606,0.3108,purchase,retail,DE,0,0.06310629928884558,0,No strong rule-based risk drivers identified
+2722,16837,69.18,15,0.1799,0.135,purchase,travel,FR,0,0.06248574582881851,0,No strong rule-based risk drivers identified
+690,18743,5.83,10,0.0556,0.0341,purchase,gaming,DE,0,0.062254124793498074,0,No strong rule-based risk drivers identified
+1107,43601,48.46,20,0.027,0.0955,purchase,electronics,NL,0,0.06219608097912721,0,Merchant category 'electronics' is higher risk in the demo data
+979,79814,45.94,9,0.062,0.0533,transfer,retail,DE,0,0.06198880060928242,0,Transaction type 'transfer' is higher risk in the demo data
+844,18114,41.72,22,0.1384,0.06,purchase,retail,US,0,0.06190064340473446,0,No strong rule-based risk drivers identified
+954,33458,33.31,18,0.0432,0.188,purchase,electronics,DE,0,0.0615772107782033,0,Merchant category 'electronics' is higher risk in the demo data
+3405,82248,22.15,10,0.179,0.3362,purchase,travel,DE,0,0.06092298543558886,0,No strong rule-based risk drivers identified
+964,49305,52.45,16,0.3234,0.2259,purchase,grocery,FR,0,0.06013119662741743,0,No strong rule-based risk drivers identified
+1286,72071,42.79,8,0.12,0.4782,purchase,grocery,DE,0,0.05944536126420536,0,No strong rule-based risk drivers identified
+713,86256,181.41,11,0.0085,0.0319,purchase,retail,DE,0,0.05934056240878989,0,No strong rule-based risk drivers identified
+99,62884,29.83,4,0.0695,0.1631,purchase,electronics,DE,0,0.05907107378994814,0,Transaction occurred during unusual hours; Merchant category 'electronics' is higher risk in the demo data
+847,87860,106.99,12,0.2206,0.0208,purchase,retail,GB,0,0.059049679400597244,0,No strong rule-based risk drivers identified
+1546,69246,60.17,9,0.1624,0.0903,purchase,crypto,FR,0,0.05901832209326842,0,Merchant category 'crypto' is higher risk in the demo data
+255,26963,23.68,9,0.1426,0.0313,withdrawal,grocery,CN,0,0.05898222851612174,0,Transaction type 'withdrawal' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+1704,78627,32.99,14,0.1742,0.2305,purchase,crypto,DE,0,0.05877774482661177,0,Merchant category 'crypto' is higher risk in the demo data
+3023,75042,50.33,14,0.0842,0.2276,purchase,electronics,DE,0,0.05826665131970164,0,Merchant category 'electronics' is higher risk in the demo data
+1522,28103,108.86,15,0.0773,0.2187,purchase,grocery,GB,0,0.05826237002244179,0,No strong rule-based risk drivers identified
+2316,52271,68.74,18,0.2931,0.0145,purchase,electronics,DE,0,0.05787440115056139,0,Merchant category 'electronics' is higher risk in the demo data
+3017,18425,63.03,9,0.2067,0.2433,purchase,grocery,NL,0,0.05761124907953932,0,No strong rule-based risk drivers identified
+526,30633,109.98,9,0.2159,0.1636,purchase,grocery,NL,0,0.05756856303673769,0,No strong rule-based risk drivers identified
+2533,41105,26.66,7,0.1339,0.1781,refund,travel,DE,0,0.05738632465639015,0,No strong rule-based risk drivers identified
+1335,96232,19.28,16,0.1821,0.2514,purchase,travel,GB,0,0.05718646248991812,0,No strong rule-based risk drivers identified
+2304,42094,14.85,10,0.216,0.1819,purchase,electronics,CN,0,0.05718484512035308,0,Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+955,22070,66.85,8,0.4142,0.267,purchase,grocery,DE,0,0.05677318413850609,0,No strong rule-based risk drivers identified
+2058,50743,80.49,8,0.1446,0.1696,purchase,grocery,FR,0,0.05669876937958526,0,No strong rule-based risk drivers identified
+2148,94456,9.02,12,0.1684,0.1064,transfer,retail,DE,0,0.05585689241207261,0,Transaction type 'transfer' is higher risk in the demo data
+1757,45482,46.69,14,0.359,0.0713,purchase,retail,RU,0,0.0558124877667694,0,Country signal is associated with higher synthetic-demo risk
+124,13734,7.62,17,0.4163,0.2703,purchase,retail,DE,0,0.05577443411031742,0,No strong rule-based risk drivers identified
+448,78405,31.89,13,0.1893,0.2681,purchase,crypto,DE,0,0.05556439288646988,0,Merchant category 'crypto' is higher risk in the demo data
+393,14082,52.69,7,0.0692,0.066,purchase,electronics,GB,0,0.055462869225076275,0,Merchant category 'electronics' is higher risk in the demo data
+2850,58340,49.59,8,0.1933,0.0282,purchase,electronics,GB,0,0.055308374322746365,0,Merchant category 'electronics' is higher risk in the demo data
+291,64688,10.15,17,0.2544,0.1993,purchase,electronics,DE,0,0.05464346119614838,0,Merchant category 'electronics' is higher risk in the demo data
+617,70759,76.85,9,0.2455,0.0284,purchase,retail,GB,0,0.05449967510499675,0,No strong rule-based risk drivers identified
+418,14899,127.28,7,0.1239,0.1246,purchase,grocery,GB,0,0.05419409147014623,0,No strong rule-based risk drivers identified
+2724,60401,948.71,11,0.1413,0.1013,purchase,retail,DE,0,0.05411217542975529,0,Transaction amount is high for this batch
+982,98344,15.83,8,0.3093,0.3756,purchase,grocery,DE,0,0.05404462169318909,0,No strong rule-based risk drivers identified
+3294,22302,93.3,16,0.0697,0.1205,purchase,retail,FR,0,0.05380996986025071,0,No strong rule-based risk drivers identified
+1871,51936,32.37,9,0.0623,0.2838,purchase,retail,DE,0,0.052793109913009714,0,No strong rule-based risk drivers identified
+2327,48980,14.35,11,0.3324,0.2612,purchase,retail,US,0,0.05275780580278437,0,No strong rule-based risk drivers identified
+98,33401,34.77,10,0.1906,0.2567,purchase,electronics,DE,0,0.05254659035581271,0,Merchant category 'electronics' is higher risk in the demo data
+3296,36503,33.13,10,0.3744,0.0884,purchase,retail,RU,0,0.05217356407422741,0,Country signal is associated with higher synthetic-demo risk
+225,54741,30.12,15,0.0877,0.0682,purchase,gaming,DE,0,0.05164570743559935,0,No strong rule-based risk drivers identified
+41,74223,45.37,7,0.1741,0.0118,purchase,electronics,GB,0,0.05153884435702895,0,Merchant category 'electronics' is higher risk in the demo data
+2231,85295,16.19,22,0.0687,0.0873,purchase,travel,DE,0,0.051245643043451646,0,No strong rule-based risk drivers identified
+146,24075,5.74,18,0.0387,0.013,purchase,electronics,GB,0,0.05093554850903924,0,Merchant category 'electronics' is higher risk in the demo data
+2121,27482,129.58,8,0.0441,0.0641,purchase,grocery,FR,0,0.05093345029091935,0,No strong rule-based risk drivers identified
+104,35503,35.87,16,0.2226,0.103,transfer,grocery,NL,0,0.05056884492844017,0,Transaction type 'transfer' is higher risk in the demo data
+857,74404,18.85,13,0.385,0.0961,purchase,electronics,CN,0,0.05046586006432333,0,Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+3458,30778,39.16,20,0.1118,0.0722,purchase,travel,GB,0,0.05044519127701829,0,No strong rule-based risk drivers identified
+2715,11248,19.37,20,0.0432,0.0813,purchase,retail,FR,0,0.050316490419848266,0,No strong rule-based risk drivers identified
+2157,31795,31.69,7,0.0678,0.2511,transfer,grocery,DE,0,0.050211272143576305,0,Transaction type 'transfer' is higher risk in the demo data
+3373,13319,31.66,12,0.0983,0.1082,withdrawal,grocery,US,0,0.05016456070487621,0,Transaction type 'withdrawal' is higher risk in the demo data
+564,57045,17.82,0,0.0646,0.2068,withdrawal,grocery,DE,0,0.04955784056749989,0,Transaction occurred during unusual hours; Transaction type 'withdrawal' is higher risk in the demo data
+1692,28350,12.65,10,0.3649,0.2056,purchase,travel,FR,0,0.0494053637554684,0,No strong rule-based risk drivers identified
+113,64086,12.92,20,0.0829,0.0997,withdrawal,retail,DE,0,0.048577458876792816,0,Transaction type 'withdrawal' is higher risk in the demo data
+566,91286,17.67,9,0.0762,0.058,withdrawal,travel,FR,0,0.04769755556454151,0,Transaction type 'withdrawal' is higher risk in the demo data
+1183,61293,72.12,12,0.1154,0.1072,purchase,crypto,DE,0,0.047497228594166524,0,Merchant category 'crypto' is higher risk in the demo data
+552,93291,75.34,18,0.2848,0.062,purchase,retail,DE,0,0.046804799265828215,0,No strong rule-based risk drivers identified
+887,32271,250.78,10,0.0851,0.0463,purchase,travel,DE,0,0.04679975703316119,0,No strong rule-based risk drivers identified
+3240,57093,39.33,7,0.331,0.0256,purchase,travel,NL,0,0.04633463749427962,0,No strong rule-based risk drivers identified
+3474,43418,27.66,13,0.0086,0.0565,purchase,gaming,NL,0,0.04605239108799443,0,No strong rule-based risk drivers identified
+2116,75845,59.1,12,0.1102,0.0735,refund,grocery,FR,0,0.046012389711830186,0,No strong rule-based risk drivers identified
+3425,55823,17.53,7,0.1524,0.1991,purchase,retail,CN,0,0.045747310794287586,0,Country signal is associated with higher synthetic-demo risk
+3312,22526,72.18,18,0.1635,0.0547,purchase,grocery,US,0,0.04546439394560679,0,No strong rule-based risk drivers identified
+2745,36425,13.5,15,0.0414,0.1147,refund,electronics,DE,0,0.04523458296568091,0,Merchant category 'electronics' is higher risk in the demo data
+1038,27066,47.63,9,0.264,0.0433,purchase,retail,CN,0,0.04485601470791194,0,Country signal is associated with higher synthetic-demo risk
+1763,67249,22.04,15,0.0846,0.1921,purchase,retail,US,0,0.0448035477056102,0,No strong rule-based risk drivers identified
+325,63181,71.25,17,0.2619,0.1013,purchase,retail,DE,0,0.04451778121034353,0,No strong rule-based risk drivers identified
+594,62394,41.07,14,0.1511,0.2885,purchase,grocery,FR,0,0.04436381336112969,0,No strong rule-based risk drivers identified
+580,41563,38.9,20,0.2093,0.081,purchase,electronics,DE,0,0.04420937583929173,0,Merchant category 'electronics' is higher risk in the demo data
+2927,73468,51.04,10,0.0188,0.0309,withdrawal,travel,DE,0,0.043957953530336026,0,Transaction type 'withdrawal' is higher risk in the demo data
+1971,35492,36.65,18,0.1916,0.1964,purchase,retail,DE,0,0.0439321203775614,0,No strong rule-based risk drivers identified
+3055,52511,23.81,13,0.0902,0.4708,purchase,grocery,DE,0,0.043806119016959896,0,No strong rule-based risk drivers identified
+840,23850,42.01,6,0.1694,0.0653,purchase,electronics,DE,0,0.043592248623311645,0,Merchant category 'electronics' is higher risk in the demo data
+1646,25290,42.82,13,0.0331,0.0636,purchase,electronics,NL,0,0.043419360065923084,0,Merchant category 'electronics' is higher risk in the demo data
+700,92039,57.3,18,0.17,0.0174,purchase,grocery,NL,0,0.042980848266175896,0,No strong rule-based risk drivers identified
+1827,24327,60.0,9,0.2381,0.0843,purchase,grocery,GB,0,0.04266334110708441,0,No strong rule-based risk drivers identified
+924,94726,41.81,12,0.1829,0.165,purchase,electronics,DE,0,0.04239870365641294,0,Merchant category 'electronics' is higher risk in the demo data
+2314,85028,11.62,15,0.2741,0.0605,purchase,electronics,GB,0,0.042043200935533945,0,Merchant category 'electronics' is higher risk in the demo data
+911,10449,13.7,2,0.0336,0.0533,transfer,grocery,DE,0,0.04198556260686878,0,Transaction occurred during unusual hours; Transaction type 'transfer' is higher risk in the demo data
+1440,22827,13.47,13,0.2346,0.0379,purchase,electronics,NL,0,0.04166298281926633,0,Merchant category 'electronics' is higher risk in the demo data
+1283,34318,64.44,15,0.0627,0.0089,purchase,electronics,DE,0,0.04149193111576048,0,Merchant category 'electronics' is higher risk in the demo data
+2039,52677,15.39,19,0.2092,0.0281,purchase,travel,DE,0,0.041131543411903886,0,No strong rule-based risk drivers identified
+1070,89877,35.27,8,0.0897,0.1166,purchase,crypto,FR,0,0.04097520816953154,0,Merchant category 'crypto' is higher risk in the demo data
+1574,13467,59.68,14,0.1512,0.1722,purchase,travel,DE,0,0.04090426889578994,0,No strong rule-based risk drivers identified
+1254,31192,55.7,11,0.2756,0.2713,purchase,grocery,DE,0,0.040803503625222094,0,No strong rule-based risk drivers identified
+3417,45331,15.29,10,0.0974,0.1325,purchase,electronics,FR,0,0.040740743048159465,0,Merchant category 'electronics' is higher risk in the demo data
+444,79955,14.54,12,0.339,0.0492,purchase,crypto,DE,0,0.04072956481480347,0,Merchant category 'crypto' is higher risk in the demo data
+1171,10506,21.31,7,0.3169,0.2216,purchase,grocery,CN,0,0.04062314942992195,0,Country signal is associated with higher synthetic-demo risk
+719,68983,26.11,16,0.2431,0.1246,purchase,retail,GB,0,0.0405275860932512,0,No strong rule-based risk drivers identified
+1358,61338,57.96,13,0.2056,0.0019,purchase,electronics,DE,0,0.03992770077862757,0,Merchant category 'electronics' is higher risk in the demo data
+204,23837,30.44,15,0.3943,0.1694,purchase,retail,FR,0,0.039821363518764114,0,No strong rule-based risk drivers identified
+3418,38438,21.77,8,0.0117,0.2639,purchase,retail,FR,0,0.03961610065161193,0,No strong rule-based risk drivers identified
+1883,54273,29.21,13,0.1014,0.2667,purchase,retail,FR,0,0.039613482368481084,0,No strong rule-based risk drivers identified
+208,81544,149.33,10,0.3155,0.0213,purchase,retail,DE,0,0.039310175501625896,0,No strong rule-based risk drivers identified
+1202,63022,16.29,9,0.088,0.2438,purchase,retail,GB,0,0.03925218453105437,0,No strong rule-based risk drivers identified
+56,53512,28.12,19,0.1539,0.0689,purchase,retail,DE,0,0.039180413730019514,0,No strong rule-based risk drivers identified
+1353,10421,47.38,10,0.2535,0.1742,purchase,retail,FR,0,0.03914242705852357,0,No strong rule-based risk drivers identified
+3311,29508,16.04,10,0.2329,0.2567,purchase,retail,FR,0,0.03883574680164593,0,No strong rule-based risk drivers identified
+1278,94124,162.71,12,0.3457,0.0823,purchase,grocery,DE,0,0.038833237465575245,0,No strong rule-based risk drivers identified
+725,51811,3.27,10,0.1792,0.1122,withdrawal,travel,DE,0,0.03876238490048084,0,Transaction type 'withdrawal' is higher risk in the demo data
+2131,91927,37.55,13,0.1224,0.228,purchase,retail,NL,0,0.03844502394467325,0,No strong rule-based risk drivers identified
+1190,91081,13.82,9,0.2066,0.2403,purchase,retail,NL,0,0.03835978768721493,0,No strong rule-based risk drivers identified
+1697,74855,22.34,11,0.1173,0.1476,transfer,grocery,DE,0,0.03811500556920378,0,Transaction type 'transfer' is higher risk in the demo data
+1657,41649,66.64,19,0.0555,0.1241,purchase,grocery,DE,0,0.03790281953699849,0,No strong rule-based risk drivers identified
+3431,80474,24.71,14,0.1855,0.0364,purchase,electronics,GB,0,0.037897627913889655,0,Merchant category 'electronics' is higher risk in the demo data
+874,37679,36.89,14,0.2545,0.1509,purchase,electronics,DE,0,0.037723291916515224,0,Merchant category 'electronics' is higher risk in the demo data
+1154,18356,307.97,8,0.1056,0.0021,purchase,grocery,DE,0,0.037723194199025256,0,Transaction amount is high for this batch
+867,40185,52.78,8,0.0469,0.2326,purchase,retail,DE,0,0.0377195581008259,0,No strong rule-based risk drivers identified
+442,26005,21.78,8,0.1337,0.1005,withdrawal,grocery,NL,0,0.03758265401592439,0,Transaction type 'withdrawal' is higher risk in the demo data
+3057,58625,29.88,16,0.3975,0.0496,purchase,grocery,CN,0,0.03748379224710072,0,Country signal is associated with higher synthetic-demo risk
+2822,87761,33.57,9,0.0792,0.182,purchase,retail,GB,0,0.037335413448097564,0,No strong rule-based risk drivers identified
+879,87976,30.13,17,0.085,0.0981,purchase,retail,GB,0,0.037262680979134405,0,No strong rule-based risk drivers identified
+3491,21252,63.12,14,0.2189,0.0817,purchase,grocery,NL,0,0.037213116497680165,0,No strong rule-based risk drivers identified
+1869,58465,15.69,16,0.2911,0.1313,purchase,electronics,DE,0,0.036925967393033804,0,Merchant category 'electronics' is higher risk in the demo data
+160,30725,33.27,10,0.1838,0.1112,withdrawal,grocery,FR,0,0.03669124015511591,0,Transaction type 'withdrawal' is higher risk in the demo data
+220,66715,34.02,6,0.0879,0.2839,purchase,grocery,DE,0,0.036523604842286624,0,No strong rule-based risk drivers identified
+779,99960,150.85,7,0.031,0.1277,purchase,grocery,DE,0,0.036238043933092066,0,No strong rule-based risk drivers identified
+1832,23342,10.61,9,0.2178,0.1592,purchase,travel,FR,0,0.03610894989607903,0,No strong rule-based risk drivers identified
+2973,38706,47.49,7,0.007,0.1602,purchase,grocery,FR,0,0.03599207742653676,0,No strong rule-based risk drivers identified
+441,68292,36.4,15,0.3715,0.1021,purchase,retail,FR,0,0.03597770905886351,0,No strong rule-based risk drivers identified
+437,17919,20.21,6,0.1427,0.0742,purchase,electronics,GB,0,0.03582899264891291,0,Merchant category 'electronics' is higher risk in the demo data
+2801,52057,21.24,16,0.2698,0.1974,purchase,retail,DE,0,0.03514958255924245,0,No strong rule-based risk drivers identified
+900,39669,8.87,1,0.048,0.0258,purchase,travel,DE,0,0.03501809680384777,0,Transaction occurred during unusual hours
+1808,44509,17.72,14,0.16,0.1909,purchase,retail,NL,0,0.03482526918911389,0,No strong rule-based risk drivers identified
+1414,84795,14.11,16,0.0419,0.1367,purchase,electronics,DE,0,0.034406418419238465,0,Merchant category 'electronics' is higher risk in the demo data
+2734,77655,36.0,14,0.1796,0.1528,purchase,retail,NL,0,0.03401897316691279,0,No strong rule-based risk drivers identified
+1064,59008,36.34,7,0.1084,0.1282,purchase,travel,FR,0,0.03401304390604893,0,No strong rule-based risk drivers identified
+1849,11459,53.75,14,0.2313,0.0596,purchase,grocery,NL,0,0.0338445485533573,0,No strong rule-based risk drivers identified
+1360,67658,3.62,8,0.0626,0.0451,transfer,grocery,FR,0,0.033798406625708675,0,Transaction type 'transfer' is higher risk in the demo data
+1868,42668,32.44,8,0.2584,0.1538,purchase,retail,NL,0,0.033454023550437834,0,No strong rule-based risk drivers identified
+933,35602,21.74,17,0.42,0.0333,purchase,grocery,FR,0,0.03337698466786766,0,No strong rule-based risk drivers identified
+2819,82809,37.29,7,0.2178,0.1839,purchase,retail,DE,0,0.03330226288626686,0,No strong rule-based risk drivers identified
+2056,48445,30.0,13,0.142,0.2271,purchase,retail,DE,0,0.03316142977325866,0,No strong rule-based risk drivers identified
+3303,79899,28.41,18,0.3151,0.2138,purchase,grocery,DE,0,0.03313033054467086,0,No strong rule-based risk drivers identified
+1509,34741,10.79,10,0.1421,0.0587,purchase,electronics,RU,0,0.03253285603097994,0,Merchant category 'electronics' is higher risk in the demo data; Country signal is associated with higher synthetic-demo risk
+267,71493,31.16,5,0.137,0.041,purchase,retail,DE,0,0.032192479663805805,0,Transaction occurred during unusual hours
+139,50597,35.71,6,0.0574,0.1232,purchase,retail,DE,0,0.03218424343573272,0,No strong rule-based risk drivers identified
+2860,48163,46.64,11,0.1153,0.06,purchase,retail,NL,0,0.03209266699517783,0,No strong rule-based risk drivers identified
+1930,54119,100.29,6,0.0833,0.0002,purchase,grocery,DE,0,0.03185367078558074,0,No strong rule-based risk drivers identified
+1298,43773,12.83,4,0.1565,0.0027,purchase,retail,DE,0,0.031548602671926475,0,Transaction occurred during unusual hours
+1987,55517,18.96,15,0.2793,0.0685,purchase,electronics,DE,0,0.03148748490215588,0,Merchant category 'electronics' is higher risk in the demo data
+3160,15536,14.23,22,0.0466,0.1348,purchase,grocery,DE,0,0.031197190114584026,0,No strong rule-based risk drivers identified
+1457,34667,18.78,11,0.4079,0.0091,purchase,retail,FR,0,0.03113010280519846,0,No strong rule-based risk drivers identified
+3121,72584,51.65,15,0.0501,0.0088,purchase,travel,DE,0,0.03095841020828459,0,No strong rule-based risk drivers identified
+2590,82210,109.09,10,0.0444,0.1818,purchase,grocery,DE,0,0.030830125009368523,0,No strong rule-based risk drivers identified
+664,98480,32.1,14,0.3473,0.0367,purchase,retail,FR,0,0.030606514743087246,0,No strong rule-based risk drivers identified
+108,99187,18.5,7,0.0346,0.0868,purchase,retail,GB,0,0.03035501017561538,0,No strong rule-based risk drivers identified
+2723,34634,44.06,12,0.1618,0.1843,purchase,retail,DE,0,0.030325601607776847,0,No strong rule-based risk drivers identified
+628,59077,69.17,13,0.023,0.1446,withdrawal,grocery,DE,0,0.03028127454011799,0,Transaction type 'withdrawal' is higher risk in the demo data
+2826,76445,60.52,20,0.0827,0.1291,purchase,grocery,DE,0,0.030235069021081563,0,No strong rule-based risk drivers identified
+1480,10771,57.24,11,0.1189,0.0373,purchase,grocery,FR,0,0.02999171063938153,0,No strong rule-based risk drivers identified
+1872,87807,25.18,7,0.0316,0.2232,purchase,grocery,US,0,0.029803819076376362,0,No strong rule-based risk drivers identified
+1357,38268,27.28,13,0.1184,0.2076,withdrawal,grocery,DE,0,0.02971048986699273,0,Transaction type 'withdrawal' is higher risk in the demo data
+1165,14458,41.66,12,0.2943,0.1128,purchase,retail,DE,0,0.029700252850145124,0,No strong rule-based risk drivers identified
+2915,15047,18.64,19,0.0094,0.0197,purchase,grocery,FR,0,0.029525922108191546,0,No strong rule-based risk drivers identified
+1567,57370,29.6,9,0.2783,0.1162,purchase,grocery,US,0,0.029423366939941378,0,No strong rule-based risk drivers identified
+1294,57602,31.11,13,0.1348,0.1332,purchase,travel,DE,0,0.02918099592218662,0,No strong rule-based risk drivers identified
+2721,87697,23.04,13,0.3475,0.3189,purchase,grocery,DE,0,0.028867601683635637,0,No strong rule-based risk drivers identified
+2277,84907,27.31,13,0.0878,0.1761,purchase,travel,DE,0,0.02862029386048794,0,No strong rule-based risk drivers identified
+3354,10942,10.07,20,0.2218,0.0209,purchase,grocery,NL,0,0.02860588473016555,0,No strong rule-based risk drivers identified
+2393,49363,57.72,9,0.1943,0.018,purchase,retail,DE,0,0.02821802872248165,0,No strong rule-based risk drivers identified
+2426,64857,10.53,10,0.1472,0.0139,purchase,travel,FR,0,0.02801384921828536,0,No strong rule-based risk drivers identified
+24,75311,3.15,13,0.04,0.1183,purchase,retail,CN,0,0.028011302729585554,0,Country signal is associated with higher synthetic-demo risk
+83,78487,22.8,8,0.233,0.0944,purchase,electronics,DE,0,0.027906939263936444,0,Merchant category 'electronics' is higher risk in the demo data
+2451,95586,24.94,12,0.0333,0.1232,purchase,retail,NL,0,0.027810513694945638,0,No strong rule-based risk drivers identified
+1082,75807,144.92,10,0.0401,0.082,purchase,grocery,DE,0,0.027757602523667758,0,No strong rule-based risk drivers identified
+1321,13698,10.05,7,0.1586,0.2863,purchase,grocery,DE,0,0.02767649576923749,0,No strong rule-based risk drivers identified
+2391,58526,31.97,12,0.0866,0.0611,purchase,retail,NL,0,0.027362910443798617,0,No strong rule-based risk drivers identified
+1430,43399,21.1,8,0.0323,0.1096,purchase,retail,FR,0,0.027157765736804246,0,No strong rule-based risk drivers identified
+2650,51077,33.03,15,0.1987,0.0421,purchase,retail,FR,0,0.026782821378595802,0,No strong rule-based risk drivers identified
+2876,56875,18.76,14,0.1218,0.043,purchase,retail,CN,0,0.026757576900118474,0,Country signal is associated with higher synthetic-demo risk
+1281,82581,25.28,9,0.1259,0.2239,purchase,grocery,FR,0,0.026626926537060138,0,No strong rule-based risk drivers identified
+978,75198,32.9,20,0.1669,0.0716,purchase,grocery,GB,0,0.0262467058592037,0,No strong rule-based risk drivers identified
+608,28352,8.66,7,0.131,0.1597,purchase,travel,DE,0,0.02619938912114016,0,No strong rule-based risk drivers identified
+3455,48383,52.6,12,0.2234,0.0276,purchase,retail,DE,0,0.02588331021341218,0,No strong rule-based risk drivers identified
+407,75845,26.18,7,0.1571,0.0375,withdrawal,grocery,DE,0,0.02572792397161922,0,Transaction type 'withdrawal' is higher risk in the demo data
+1906,42040,34.08,12,0.2824,0.1087,purchase,grocery,FR,0,0.025469618757082754,0,No strong rule-based risk drivers identified
+2603,22087,36.48,15,0.2357,0.0673,purchase,travel,DE,0,0.025145655405722958,0,No strong rule-based risk drivers identified
+1086,46945,37.55,14,0.0559,0.0622,purchase,grocery,US,0,0.02505808574922647,0,No strong rule-based risk drivers identified
+169,15306,26.43,13,0.2622,0.0451,purchase,travel,DE,0,0.02504606976128149,0,No strong rule-based risk drivers identified
+1180,39080,25.18,15,0.0199,0.0927,purchase,retail,NL,0,0.024881478978115986,0,No strong rule-based risk drivers identified
+1862,42610,12.42,14,0.0008,0.0589,purchase,travel,CN,0,0.02468697914115117,0,Country signal is associated with higher synthetic-demo risk
+1270,25064,21.18,10,0.1932,0.0982,purchase,grocery,CN,0,0.02467664140175027,0,Country signal is associated with higher synthetic-demo risk
+1218,63619,21.0,8,0.0962,0.1254,purchase,grocery,US,0,0.024501127788506227,0,No strong rule-based risk drivers identified
+2029,36445,38.04,21,0.1614,0.0996,purchase,grocery,DE,0,0.024240554479428158,0,No strong rule-based risk drivers identified
+2301,79117,26.01,10,0.032,0.2365,purchase,grocery,CN,0,0.02370668557881329,0,Country signal is associated with higher synthetic-demo risk
+891,83654,36.93,13,0.1244,0.0098,purchase,travel,DE,0,0.02348978940054766,0,No strong rule-based risk drivers identified
+3198,12610,36.88,14,0.0159,0.0485,purchase,grocery,US,0,0.023450175158154344,0,No strong rule-based risk drivers identified
+521,51180,35.12,8,0.003,0.0219,purchase,retail,DE,0,0.023122568706709912,0,No strong rule-based risk drivers identified
+2566,43737,7.96,8,0.0074,0.1004,purchase,retail,DE,0,0.02307432123753368,0,No strong rule-based risk drivers identified
+545,47427,33.59,17,0.0618,0.076,purchase,grocery,DE,0,0.022942143481738123,0,No strong rule-based risk drivers identified
+3216,99391,29.3,16,0.3297,0.1497,purchase,grocery,DE,0,0.02286945192865686,0,No strong rule-based risk drivers identified
+1777,94591,40.61,8,0.1036,0.0341,purchase,retail,DE,0,0.022720647526480425,0,No strong rule-based risk drivers identified
+1960,70483,120.79,16,0.0709,0.1022,purchase,grocery,DE,0,0.022647622962176806,0,No strong rule-based risk drivers identified
+604,79522,20.19,8,0.004,0.0607,purchase,electronics,DE,0,0.022379720940016678,0,Merchant category 'electronics' is higher risk in the demo data
+1986,73537,31.7,8,0.0522,0.0423,withdrawal,grocery,DE,0,0.02186433628948503,0,Transaction type 'withdrawal' is higher risk in the demo data
+2081,46552,19.01,14,0.1238,0.3267,purchase,grocery,DE,0,0.021836184788583384,0,No strong rule-based risk drivers identified
+761,19596,15.16,14,0.2009,0.0355,purchase,electronics,DE,0,0.021232434396583275,0,Merchant category 'electronics' is higher risk in the demo data
+2616,84383,33.15,11,0.0006,0.1668,purchase,grocery,FR,0,0.02119761018694767,0,No strong rule-based risk drivers identified
+2740,79041,18.73,13,0.0385,0.0956,purchase,travel,DE,0,0.021039000629156094,0,No strong rule-based risk drivers identified
+2774,42459,38.09,12,0.1593,0.2157,purchase,grocery,DE,0,0.020855696134061588,0,No strong rule-based risk drivers identified
+1685,42073,25.83,17,0.087,0.0203,purchase,grocery,FR,0,0.02078015640614366,0,No strong rule-based risk drivers identified
+2923,34445,30.45,16,0.1082,0.043,purchase,grocery,GB,0,0.020308963275249534,0,No strong rule-based risk drivers identified
+3422,29272,28.08,9,0.0989,0.1393,purchase,grocery,NL,0,0.02030643918441187,0,No strong rule-based risk drivers identified
+1600,19803,15.6,12,0.0442,0.11,refund,grocery,DE,0,0.020052060143294442,0,No strong rule-based risk drivers identified
+2006,18457,26.14,11,0.1677,0.0148,purchase,retail,DE,0,0.019848957110479043,0,No strong rule-based risk drivers identified
+3059,96962,47.22,13,0.1156,0.1347,purchase,grocery,DE,0,0.01947176677590111,0,No strong rule-based risk drivers identified
+1885,36701,32.28,10,0.045,0.1062,purchase,grocery,GB,0,0.0193979324241786,0,No strong rule-based risk drivers identified
+1643,31418,12.79,13,0.3473,0.0218,purchase,retail,DE,0,0.01939711710064993,0,No strong rule-based risk drivers identified
+1197,10802,27.3,10,0.0867,0.0312,purchase,retail,DE,0,0.019316633738994532,0,No strong rule-based risk drivers identified
+464,96824,16.39,13,0.2645,0.0886,purchase,retail,DE,0,0.01874221704986892,0,No strong rule-based risk drivers identified
+1313,37105,21.65,9,0.2009,0.0226,purchase,grocery,FR,0,0.01777079414290938,0,No strong rule-based risk drivers identified
+3257,37203,45.79,7,0.0261,0.0048,purchase,grocery,DE,0,0.017501766994908696,0,No strong rule-based risk drivers identified
+3360,14051,33.7,14,0.1567,0.0589,purchase,grocery,NL,0,0.017371485923700646,0,No strong rule-based risk drivers identified
+1711,21668,27.19,15,0.1587,0.0914,purchase,grocery,NL,0,0.01701230896986389,0,No strong rule-based risk drivers identified
+1501,22490,38.98,7,0.1519,0.1101,purchase,grocery,DE,0,0.01692916998564754,0,No strong rule-based risk drivers identified
+1369,58966,32.51,11,0.1146,0.0569,purchase,grocery,FR,0,0.01616593132791659,0,No strong rule-based risk drivers identified
+1833,51631,50.54,9,0.2024,0.0207,purchase,grocery,DE,0,0.016026967849540885,0,No strong rule-based risk drivers identified
+1713,15665,18.53,14,0.0576,0.1293,purchase,grocery,CN,0,0.013652850127598964,0,Country signal is associated with higher synthetic-demo risk
+802,63205,13.01,10,0.0918,0.1618,purchase,grocery,DE,0,0.012040580680583753,0,No strong rule-based risk drivers identified
+1749,97562,16.08,9,0.0577,0.0788,purchase,grocery,DE,0,0.010563436397272778,0,No strong rule-based risk drivers identified
+3284,67670,14.95,11,0.142,0.0661,purchase,grocery,DE,0,0.01019381177564539,0,No strong rule-based risk drivers identified

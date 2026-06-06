@@ -1,0 +1,49 @@
+{
+  "roc_auc": 0.9756728023180671,
+  "average_precision": 0.8434221409146656,
+  "brier_score": 0.05156164061237544,
+  "positive_rate_test": 0.11,
+  "n_test_samples": 700,
+  "best_threshold": {
+    "threshold": 0.3,
+    "tp": 74,
+    "fp": 70,
+    "tn": 553,
+    "fn": 3,
+    "precision": 0.5138888888888888,
+    "recall": 0.961038961038961,
+    "f1": 0.6696832579185519,
+    "false_positive_rate": 0.11235955056179775,
+    "specificity": 0.8876404494382022,
+    "flagged_rate": 0.2057142857142857,
+    "cost": 100.0,
+    "normalized_cost": 0.14285714285714285
+  },
+  "baseline_metrics": {
+    "majority_class": {
+      "roc_auc": 0.5,
+      "average_precision": 0.11,
+      "brier_score": 0.11,
+      "strategy": "most_frequent"
+    },
+    "empirical_prior": {
+      "roc_auc": 0.5,
+      "average_precision": 0.11,
+      "brier_score": 0.0979,
+      "strategy": "prior"
+    },
+    "stratified_random": {
+      "roc_auc": 0.5169268933313877,
+      "average_precision": 0.11410861865407318,
+      "brier_score": 0.20142857142857143,
+      "strategy": "stratified"
+    }
+  },
+  "cost_false_negative": 10.0,
+  "cost_false_positive": 1.0,
+  "threshold_policy_artifacts": {
+    "json": "C:\\Users\\Amir\\Desktop\\New folder\\Financial-Fraud-Risk-Engine-main\\reports\\metrics\\threshold_policy.json",
+    "csv": "C:\\Users\\Amir\\Desktop\\New folder\\Financial-Fraud-Risk-Engine-main\\reports\\metrics\\threshold_policy.csv",
+    "markdown": "C:\\Users\\Amir\\Desktop\\New folder\\Financial-Fraud-Risk-Engine-main\\reports\\metrics\\threshold_policy.md"
+  }
+}
