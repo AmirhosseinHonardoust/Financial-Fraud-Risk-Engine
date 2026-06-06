@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import json
 from pathlib import Path
 from typing import Optional
@@ -6,47 +8,82 @@ import joblib
 import pandas as pd
 
 from .config import MODELS_DIR
+from .validation import (
+    DataValidationError,
+    prepare_features_for_scoring,
+    validate_threshold,
+)
 
 
 def load_model_and_threshold():
+    """Load the persisted fraud model and selected decision threshold."""
     model_path = MODELS_DIR / "fraud_pipeline.joblib"
     threshold_path = MODELS_DIR / "threshold.json"
 
-    if not model_path.exists() or not threshold_path.exists():
+    if not model_path.exists():
         raise FileNotFoundError(
-            "Model or threshold not found. Make sure to run train_model.py and evaluate.py first."
+            f"Model not found at {model_path}. Run `python -m src.train_model` first."
+        )
+
+    if not threshold_path.exists():
+        raise FileNotFoundError(
+            f"Threshold file not found at {threshold_path}. Run `python -m src.evaluate` first."
         )
 
     model = joblib.load(model_path)
+
     with threshold_path.open() as f:
         threshold_info = json.load(f)
 
-    threshold = float(threshold_info["threshold"])
+    threshold = validate_threshold(float(threshold_info["threshold"]))
     return model, threshold
+
+
+def score_dataframe(
+    df: pd.DataFrame,
+    *,
+    threshold: float,
+    model,
+) -> pd.DataFrame:
+    """Score a dataframe and return a copy with fraud probabilities and flags."""
+    threshold = validate_threshold(threshold)
+    features = prepare_features_for_scoring(df)
+
+    probs = model.predict_proba(features)[:, 1]
+    preds = (probs >= threshold).astype(int)
+
+    df_scored = df.copy()
+    df_scored["fraud_probability"] = probs
+    df_scored["fraud_flag"] = preds
+    df_scored = df_scored.sort_values("fraud_probability", ascending=False).reset_index(drop=True)
+    return df_scored
 
 
 def score_file(
     input_csv: str | Path,
     output_csv: Optional[str | Path] = None,
 ) -> Path:
+    """Score a CSV of transactions and save a download-ready scored CSV."""
     model, threshold = load_model_and_threshold()
 
     input_csv = Path(input_csv)
+
+    if not input_csv.exists():
+        raise FileNotFoundError(f"Input CSV not found: {input_csv}")
+
     df = pd.read_csv(input_csv)
-
-    probs = model.predict_proba(df)[:, 1]
-    preds = (probs >= threshold).astype(int)
-
-    df_scored = df.copy()
-    df_scored["fraud_probability"] = probs
-    df_scored["fraud_flag"] = preds
+    df_scored = score_dataframe(df, threshold=threshold, model=model)
 
     if output_csv is None:
         output_csv = input_csv.with_name(input_csv.stem + "_scored.csv")
 
     output_csv = Path(output_csv)
+    output_csv.parent.mkdir(parents=True, exist_ok=True)
     df_scored.to_csv(output_csv, index=False)
+
     print(f"Saved scored transactions to: {output_csv}")
+    print(f"Rows scored: {len(df_scored):,}")
+    print(f"Flagged transactions: {int(df_scored['fraud_flag'].sum()):,}")
     return output_csv
 
 
@@ -61,11 +98,14 @@ def main():
         "--output_csv",
         type=str,
         default=None,
-        help="Where to save scored CSV. Defaults to '<input>_scored.csv'",
+        help="Where to save scored CSV. Defaults to '<input>_scored.csv'.",
     )
     args = parser.parse_args()
 
-    score_file(args.input_csv, args.output_csv)
+    try:
+        score_file(args.input_csv, args.output_csv)
+    except DataValidationError as exc:
+        raise SystemExit(f"Input validation failed: {exc}") from exc
 
 
 if __name__ == "__main__":
