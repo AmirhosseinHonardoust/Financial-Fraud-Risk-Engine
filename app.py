@@ -1,5 +1,9 @@
+from __future__ import annotations
+
 import json
+import sys
 from pathlib import Path
+from typing import Any
 
 import joblib
 import matplotlib.pyplot as plt
@@ -8,18 +12,28 @@ import pandas as pd
 import shap
 import streamlit as st
 
-import sys
-
 PROJECT_ROOT = Path(__file__).resolve().parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.append(str(PROJECT_ROOT))
 
-from src.config import PROCESSED_DATA_DIR, TARGET_COL  # type: ignore
+from src.config import METRICS_DIR, PROCESSED_DATA_DIR, TARGET_COL  # type: ignore
+from src.dashboard_utils import (  # type: ignore
+    add_risk_band,
+    build_model_metadata,
+    format_float,
+    format_percent,
+    summarize_scored_transactions,
+)
 from src.score_new_transactions import score_dataframe  # type: ignore
-from src.validation import DataValidationError, validate_scoring_dataframe, validate_threshold  # type: ignore
+from src.validation import (  # type: ignore
+    DataValidationError,
+    REQUIRED_FEATURE_COLUMNS,
+    validate_scoring_dataframe,
+    validate_threshold,
+)
 
 
-# ------------- Helpers for loading model & data ------------------
+# ------------- Helpers for loading model, metadata, and data ------------------
 
 
 @st.cache_resource
@@ -32,25 +46,35 @@ def load_model():
         )
         st.stop()
 
-    model = joblib.load(model_path)
-    return model
+    return joblib.load(model_path)
 
 
 @st.cache_data
-def load_threshold():
+def load_threshold() -> dict[str, Any]:
     threshold_path = PROJECT_ROOT / "models" / "threshold.json"
     if not threshold_path.exists():
-        # Fallback: default threshold 0.5
         return {"threshold": 0.5, "note": "threshold.json not found; using 0.5"}
 
     with threshold_path.open() as f:
-        thr_info = json.load(f)
-    return thr_info
+        return json.load(f)
 
 
 @st.cache_data
-def load_sample_data():
-    """Use processed test data as a demo if user doesn't upload."""
+def load_json_file(path: str | Path) -> dict[str, Any]:
+    path = Path(path)
+    if not path.exists():
+        return {}
+
+    try:
+        with path.open() as f:
+            return json.load(f)
+    except json.JSONDecodeError:
+        return {}
+
+
+@st.cache_data
+def load_sample_data() -> pd.DataFrame:
+    """Use processed test data as a demo if user does not upload data."""
     test_path = PROCESSED_DATA_DIR / "transactions_test.csv"
     if not test_path.exists():
         st.error(
@@ -59,8 +83,7 @@ def load_sample_data():
         )
         st.stop()
 
-    df = pd.read_csv(test_path)
-    return df
+    return pd.read_csv(test_path)
 
 
 def score_transactions(model, df: pd.DataFrame, threshold: float) -> pd.DataFrame:
@@ -83,29 +106,19 @@ def get_shap_explainer(_model):
     return explainer, preprocessor, feature_names
 
 
-
 def plot_single_shap_bar(
     shap_values: np.ndarray,
     feature_names: np.ndarray,
     max_features: int = 10,
 ):
-    """
-    Plot top-|SHAP| features for a single prediction.
-
-    We defensively:
-    - flatten shap_values to 1D
-    - align feature_names length to shap_values length
-    """
-    # Ensure numpy arrays
-    shap_values = np.asarray(shap_values).reshape(-1)  # flatten to 1D
+    """Plot top-|SHAP| features for a single prediction."""
+    shap_values = np.asarray(shap_values).reshape(-1)
     feature_names = np.asarray(feature_names)
 
-    # Align lengths in case SHAP/feature_names mismatch a bit
     n_features = min(len(shap_values), len(feature_names))
     shap_values = shap_values[:n_features]
     feature_names = feature_names[:n_features]
 
-    # Sort by absolute impact
     abs_vals = np.abs(shap_values)
     idx_sorted = np.argsort(abs_vals)[::-1][:max_features]
 
@@ -119,26 +132,23 @@ def plot_single_shap_bar(
     ax.set_yticks(y_pos)
     ax.set_yticklabels(selected_names)
     ax.invert_yaxis()
-    ax.set_xlabel("SHAP value (impact on fraud probability)")
+    ax.set_xlabel("SHAP value")
     ax.set_title("Top feature contributions for this transaction")
 
     plt.tight_layout()
     return fig
 
 
-
 def explain_single_transaction(model, df_scored: pd.DataFrame, row_idx: int):
     """Compute SHAP values for a single row and return a matplotlib figure."""
     explainer, preprocessor, feature_names = get_shap_explainer(model)
 
-    # Drop target and prediction columns when computing SHAP input
-    cols_to_drop = [TARGET_COL, "fraud_probability", "fraud_flag"]
+    cols_to_drop = [TARGET_COL, "fraud_probability", "fraud_flag", "risk_band"]
     features_df = df_scored.drop(columns=[c for c in cols_to_drop if c in df_scored.columns])
 
-    x_row = features_df.iloc[[row_idx]]  # keep as DataFrame
+    x_row = features_df.iloc[[row_idx]]
     x_transformed = preprocessor.transform(x_row)
 
-    # For tree models, SHAP expects a dense array
     try:
         import scipy.sparse as sp
 
@@ -151,18 +161,12 @@ def explain_single_transaction(model, df_scored: pd.DataFrame, row_idx: int):
 
     shap_vals = explainer.shap_values(x_for_shap)
 
-    # Binary classifier: can be list [class0, class1] *or* a single array
     if isinstance(shap_vals, list):
-        # class 1 (fraud), first sample
         shap_for_fraud_class = shap_vals[1][0]
     else:
-        # single array -> first sample
         shap_for_fraud_class = shap_vals[0]
 
-    fig = plot_single_shap_bar(shap_for_fraud_class, feature_names)
-    return fig
-
-
+    return plot_single_shap_bar(shap_for_fraud_class, feature_names)
 
 
 # ------------- Streamlit UI ------------------
@@ -181,26 +185,40 @@ This app wraps a trained fraud detection model into an **interactive risk dashbo
 
 - Upload transaction data or use the built-in test set  
 - Tune the **decision threshold**  
-- Explore **risk distribution** and **flagged transactions**  
+- Explore **risk distribution**, **risk bands**, and **flagged transactions**  
+- Download scored transactions for analyst review  
 - Inspect **feature-level explanations** for individual transactions
 """
     )
 
+    st.warning(
+        "This dashboard uses a synthetic, highly separable demo dataset. "
+        "It demonstrates fraud-risk workflow design, not real-world fraud benchmark performance."
+    )
+
     model = load_model()
     threshold_info = load_threshold()
-    default_threshold = float(threshold_info.get("threshold", 0.5))
+    train_metrics = load_json_file(METRICS_DIR / "metrics.json")
+    evaluation_summary = load_json_file(METRICS_DIR / "evaluation_summary.json")
+    model_metadata = build_model_metadata(
+        model,
+        threshold_info,
+        train_metrics,
+        evaluation_summary,
+    )
+    default_threshold = float(model_metadata.get("saved_threshold") or 0.5)
 
-    # Sidebar controls
     st.sidebar.header("Controls")
 
-    st.sidebar.markdown("### Threshold")
+    st.sidebar.markdown("### Decision threshold")
     thr = st.sidebar.slider(
-        "Decision threshold (fraud if probability ≥ threshold)",
+        "Fraud if probability ≥ threshold",
         min_value=0.0,
         max_value=1.0,
         value=float(default_threshold),
         step=0.01,
     )
+    st.sidebar.caption(f"Saved threshold: {default_threshold:.2f}")
 
     st.sidebar.markdown("### Data source")
     uploaded_file = st.sidebar.file_uploader(
@@ -215,34 +233,60 @@ This app wraps a trained fraud detection model into an **interactive risk dashbo
         df_raw = load_sample_data()
         st.sidebar.info("No file uploaded. Using sample test data from the project.")
 
-    # Score data
+    with st.sidebar.expander("Required upload columns"):
+        st.write(REQUIRED_FEATURE_COLUMNS)
+        st.caption("The target column is optional for scoring.")
+
+    with st.sidebar.expander("Model metadata"):
+        st.write(
+            {
+                "model_type": model_metadata.get("model_type"),
+                "saved_threshold": model_metadata.get("saved_threshold"),
+                "roc_auc": model_metadata.get("roc_auc"),
+                "average_precision": model_metadata.get("average_precision"),
+                "brier_score": model_metadata.get("brier_score"),
+                "n_train_samples": model_metadata.get("n_train_samples"),
+                "n_test_samples": model_metadata.get("n_test_samples"),
+            }
+        )
+        st.caption(model_metadata["data_note"])
+
     try:
         df_scored = score_transactions(model, df_raw, thr)
+        df_scored = add_risk_band(df_scored)
     except DataValidationError as exc:
         st.error(f"Input validation failed: {exc}")
         st.info(
             "Please upload a CSV containing the required transaction feature columns. "
             "The target column is optional for scoring."
         )
+        st.code("\n".join(REQUIRED_FEATURE_COLUMNS), language="text")
         st.stop()
 
-    # --- Layout: metrics row ---
+    summary = summarize_scored_transactions(df_scored, thr)
+
     st.subheader("Overview")
 
-    n_rows = len(df_scored)
-    fraud_rate = df_scored.get(TARGET_COL, pd.Series([np.nan] * n_rows)).mean()
-    predicted_rate = df_scored["fraud_flag"].mean()
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Total transactions", f"{summary['total_transactions']:,}")
+    col2.metric("Flagged transactions", f"{summary['flagged_count']:,}")
+    col3.metric("Flagged rate", format_percent(summary["flagged_rate"]))
+    col4.metric("P95 fraud probability", format_float(summary["p95_probability"]))
 
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Total transactions", f"{n_rows:,}")
-    if TARGET_COL in df_scored.columns:
-        col2.metric("True fraud rate (label)", f"{fraud_rate * 100:.2f}%")
-    else:
-        col2.metric("True fraud rate (label)", "Unknown (no labels)")
-    col3.metric("Flagged by model", f"{predicted_rate * 100:.2f}%")
+    col5, col6, col7, col8 = st.columns(4)
+    col5.metric("Average probability", format_float(summary["average_probability"]))
+    col6.metric("Max probability", format_float(summary["max_probability"]))
+    col7.metric("True fraud rate", format_percent(summary["true_fraud_rate"]))
+    col8.metric("Selected threshold", f"{thr:.2f}")
 
-    # --- Risk distribution & flags ---
-    st.subheader("Risk Distribution & Flagged Transactions")
+    st.markdown("### Model quality snapshot")
+    m1, m2, m3, m4 = st.columns(4)
+    m1.metric("ROC-AUC", format_float(model_metadata.get("roc_auc")))
+    m2.metric("PR-AUC", format_float(model_metadata.get("average_precision")))
+    m3.metric("Brier score", format_float(model_metadata.get("brier_score")))
+    m4.metric("Saved threshold", format_float(model_metadata.get("saved_threshold"), digits=2))
+
+    st.subheader("Risk Distribution & Analyst Review Queue")
 
     c1, c2 = st.columns([2, 3])
 
@@ -257,28 +301,50 @@ This app wraps a trained fraud detection model into an **interactive risk dashbo
         ax.legend()
         st.pyplot(fig)
 
+        st.markdown("**Risk band counts**")
+        risk_order = ["Low", "Medium", "High", "Critical"]
+        risk_counts = df_scored["risk_band"].value_counts().reindex(risk_order, fill_value=0)
+        st.bar_chart(risk_counts)
+
     with c2:
         st.markdown("**Top high-risk transactions**")
         top_n = st.slider("Show top N by fraud probability", 5, 100, 20)
-        top_risky = df_scored.sort_values("fraud_probability", ascending=False).head(top_n)
-        st.dataframe(top_risky)
+        display_cols = [
+            col
+            for col in [
+                "transaction_id",
+                "user_id",
+                "fraud_probability",
+                "fraud_flag",
+                "risk_band",
+                "amount",
+                "hour",
+                "device_risk_score",
+                "ip_risk_score",
+                "transaction_type",
+                "merchant_category",
+                "country",
+                TARGET_COL,
+            ]
+            if col in df_scored.columns
+        ]
+        top_risky = df_scored.head(top_n)
+        st.dataframe(top_risky[display_cols], use_container_width=True)
 
     scored_csv = df_scored.to_csv(index=False).encode("utf-8")
     st.download_button(
         label="Download scored transactions CSV",
         data=scored_csv,
-        file_name="fraud_scored_transactions.csv",
+        file_name=f"fraud_scored_transactions_threshold_{thr:.2f}.csv",
         mime="text/csv",
     )
 
-    # --- Per-transaction explanation ---
-    st.subheader("Explain a single transaction")
+    st.subheader("Explain a Single Transaction")
 
     if len(df_scored) == 0:
         st.warning("No data available for explanation.")
         return
 
-    # Let user pick by index or transaction_id (if available)
     id_col = None
     for candidate in ["transaction_id", "id", "txn_id"]:
         if candidate in df_scored.columns:
@@ -288,26 +354,28 @@ This app wraps a trained fraud detection model into an **interactive risk dashbo
     if id_col is not None:
         options = df_scored[id_col].tolist()
         selected_id = st.selectbox(f"Select {id_col} to explain", options, index=0)
-        row_idx = df_scored.index[df_scored[id_col] == selected_id][0]
+        row_idx = int(df_scored.index[df_scored[id_col] == selected_id][0])
     else:
-        row_idx = st.number_input(
-            "Row index to explain (0-based)",
-            min_value=0,
-            max_value=len(df_scored) - 1,
-            value=0,
-            step=1,
+        row_idx = int(
+            st.number_input(
+                "Row index to explain (0-based)",
+                min_value=0,
+                max_value=len(df_scored) - 1,
+                value=0,
+                step=1,
+            )
         )
-        selected_id = row_idx
 
     row = df_scored.iloc[row_idx]
 
-    st.markdown("**Selected transaction (raw)**")
-    st.write(row.to_frame().T)
+    st.markdown("**Selected transaction**")
+    st.dataframe(row.to_frame().T, use_container_width=True)
 
     st.markdown("**Model prediction**")
     st.write(
         f"Fraud probability: **{row['fraud_probability']:.4f}**, "
-        f"fraud_flag (with threshold {thr:.2f}): **{int(row['fraud_flag'])}**"
+        f"risk band: **{row['risk_band']}**, "
+        f"fraud flag at threshold {thr:.2f}: **{int(row['fraud_flag'])}**"
     )
 
     st.markdown("**Feature contribution (SHAP)**")
