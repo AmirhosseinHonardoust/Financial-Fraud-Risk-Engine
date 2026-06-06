@@ -1,0 +1,128 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  smoke-test:
+    name: Smoke test on Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    env:
+      MPLBACKEND: Agg
+      PYTHONWARNINGS: ignore
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Check source files compile
+        run: |
+          python -m compileall src app.py tests
+
+      - name: Run unit tests
+        run: |
+          python -m unittest discover -s tests -v
+
+      - name: Prepare small processed dataset
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          from sklearn.model_selection import train_test_split
+
+          raw_path = Path("data/raw/synthetic_fraud_dataset.csv")
+          out_dir = Path("data/processed")
+          out_dir.mkdir(parents=True, exist_ok=True)
+
+          df = pd.read_csv(raw_path)
+          # Keep CI fast while preserving both classes and the project schema.
+          parts = []
+          for _, group in df.groupby("is_fraud"):
+              parts.append(group.sample(n=min(len(group), 120), random_state=42))
+          small = (
+              pd.concat(parts, ignore_index=True)
+              .sample(frac=1.0, random_state=42)
+              .reset_index(drop=True)
+          )
+
+          train_df, test_df = train_test_split(
+              small,
+              test_size=0.25,
+              stratify=small["is_fraud"],
+              random_state=42,
+          )
+
+          train_df.to_csv(out_dir / "transactions_train.csv", index=False)
+          test_df.to_csv(out_dir / "transactions_test.csv", index=False)
+          print(f"CI train shape: {train_df.shape}")
+          print(f"CI test shape: {test_df.shape}")
+          PY
+
+      - name: Train fraud model
+        run: |
+          python -m src.train_model
+
+      - name: Evaluate thresholds and plots
+        run: |
+          python -m src.evaluate
+
+      - name: Score held-out transactions
+        run: |
+          python -m src.score_new_transactions data/processed/transactions_test.csv --output_csv reports/metrics/ci_scored_transactions.csv
+
+      - name: Verify expected outputs
+        run: |
+          test -f data/processed/transactions_train.csv
+          test -f data/processed/transactions_test.csv
+          test -f models/fraud_pipeline.joblib
+          test -f models/threshold.json
+          test -f reports/metrics/metrics.json
+          test -f reports/metrics/threshold_search.json
+          test -f reports/metrics/ci_scored_transactions.csv
+          test -f reports/figures/roc_curve.png
+          test -f reports/figures/pr_curve.png
+          test -f reports/figures/confusion_matrix.png
+
+      - name: Validate scored output schema
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          path = "reports/metrics/ci_scored_transactions.csv"
+          df = pd.read_csv(path)
+          required = {"fraud_probability", "fraud_flag"}
+          missing = required - set(df.columns)
+          if missing:
+              raise AssertionError(f"Missing scored output columns: {missing}")
+          if not df["fraud_probability"].between(0, 1).all():
+              raise AssertionError("fraud_probability values must be between 0 and 1")
+          print(f"{path} OK: {len(df)} scored rows")
+          PY
+
+      - name: Upload generated reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: fraud-risk-engine-reports-python-${{ matrix.python-version }}
+          path: |
+            models/fraud_pipeline.joblib
+            models/threshold.json
+            reports/metrics/
+            reports/figures/
