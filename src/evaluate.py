@@ -32,6 +32,7 @@ from .config import (
     THRESHOLD_GRID,
 )
 from .features import build_pipeline
+from .threshold_policy import save_threshold_policy_artifacts
 from .validation import validate_training_dataframe
 
 
@@ -284,6 +285,13 @@ def main() -> None:
         json.dump(results, f, indent=2)
 
     save_threshold_search_csv(results)
+    policy_paths = save_threshold_policy_artifacts(
+        results,
+        best,
+        metrics_dir=METRICS_DIR,
+        cost_false_positive=COST_FALSE_POSITIVE,
+        cost_false_negative=COST_FALSE_NEGATIVE,
+    )
 
     threshold_path = MODELS_DIR / "threshold.json"
     with threshold_path.open("w") as f:
@@ -297,6 +305,7 @@ def main() -> None:
         "baseline_metrics": baseline_metrics,
         "cost_false_negative": COST_FALSE_NEGATIVE,
         "cost_false_positive": COST_FALSE_POSITIVE,
+        "threshold_policy_artifacts": {key: str(path) for key, path in policy_paths.items()},
     }
 
     summary_path = METRICS_DIR / "evaluation_summary.json"
