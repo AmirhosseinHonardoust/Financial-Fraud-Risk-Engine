@@ -12,6 +12,7 @@ from .config import (
     TARGET_COL,
 )
 from .features import build_pipeline
+from .validation import validate_training_dataframe
 
 
 def load_processed_data():
@@ -26,6 +27,8 @@ def load_processed_data():
 
     train_df = pd.read_csv(train_path)
     test_df = pd.read_csv(test_path)
+    validate_training_dataframe(train_df, context="processed training data")
+    validate_training_dataframe(test_df, context="processed test data")
     return train_df, test_df
 
 
