@@ -15,6 +15,10 @@ jobs:
       matrix:
         python-version: ["3.10", "3.11", "3.12"]
 
+    env:
+      MPLBACKEND: Agg
+      PYTHONWARNINGS: ignore
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -67,12 +71,7 @@ jobs:
               raise FileNotFoundError(path)
 
           df = pd.read_csv(path)
-
-          required = {
-              "fraud_probability",
-              "fraud_flag",
-          }
-
+          required = {"fraud_probability", "fraud_flag"}
           missing = required - set(df.columns)
           if missing:
               raise AssertionError(f"Missing scored columns: {missing}")
@@ -94,11 +93,43 @@ jobs:
           test -f models/fraud_pipeline.joblib
           test -f models/threshold.json
           test -f reports/metrics/metrics.json
+          test -f reports/metrics/evaluation_summary.json
           test -f reports/metrics/threshold_search.json
+          test -f reports/metrics/threshold_search.csv
           test -f reports/metrics/test_scored.csv
           test -f reports/figures/roc_curve.png
           test -f reports/figures/pr_curve.png
+          test -f reports/figures/calibration_curve.png
           test -f reports/figures/confusion_matrix.png
+          test -f reports/figures/threshold_cost_curve.png
+          test -f reports/figures/threshold_tradeoffs.png
+
+      - name: Validate evaluation metrics JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          summary_path = Path("reports/metrics/evaluation_summary.json")
+          data = json.loads(summary_path.read_text())
+
+          required = {
+              "roc_auc",
+              "average_precision",
+              "brier_score",
+              "best_threshold",
+              "baseline_metrics",
+          }
+          missing = required - set(data)
+          if missing:
+              raise AssertionError(f"Missing evaluation summary keys: {missing}")
+
+          for key in ["majority_class", "empirical_prior", "stratified_random"]:
+              if key not in data["baseline_metrics"]:
+                  raise AssertionError(f"Missing baseline metrics for {key}")
+
+          print("Evaluation summary JSON OK")
+          PY
 
       - name: Upload generated artifacts
         uses: actions/upload-artifact@v4
