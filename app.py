@@ -15,6 +15,8 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.append(str(PROJECT_ROOT))
 
 from src.config import PROCESSED_DATA_DIR, TARGET_COL  # type: ignore
+from src.score_new_transactions import score_dataframe  # type: ignore
+from src.validation import DataValidationError, validate_scoring_dataframe, validate_threshold  # type: ignore
 
 
 # ------------- Helpers for loading model & data ------------------
@@ -62,17 +64,10 @@ def load_sample_data():
 
 
 def score_transactions(model, df: pd.DataFrame, threshold: float) -> pd.DataFrame:
-    """Add fraud_probability and fraud_flag to a dataframe."""
-    # If dataset still has target column (e.g. using test set), drop it for scoring
-    df_features = df.drop(columns=[TARGET_COL], errors="ignore")
-
-    probs = model.predict_proba(df_features)[:, 1]
-    flags = (probs >= threshold).astype(int)
-
-    df_scored = df.copy()
-    df_scored["fraud_probability"] = probs
-    df_scored["fraud_flag"] = flags
-    return df_scored
+    """Validate and score transactions with fraud probabilities and flags."""
+    validate_scoring_dataframe(df, context="uploaded/sample transaction data")
+    threshold = validate_threshold(threshold)
+    return score_dataframe(df, threshold=threshold, model=model)
 
 
 # ------------- SHAP explanation helpers ------------------
@@ -221,7 +216,15 @@ This app wraps a trained fraud detection model into an **interactive risk dashbo
         st.sidebar.info("No file uploaded. Using sample test data from the project.")
 
     # Score data
-    df_scored = score_transactions(model, df_raw, thr)
+    try:
+        df_scored = score_transactions(model, df_raw, thr)
+    except DataValidationError as exc:
+        st.error(f"Input validation failed: {exc}")
+        st.info(
+            "Please upload a CSV containing the required transaction feature columns. "
+            "The target column is optional for scoring."
+        )
+        st.stop()
 
     # --- Layout: metrics row ---
     st.subheader("Overview")
@@ -259,6 +262,14 @@ This app wraps a trained fraud detection model into an **interactive risk dashbo
         top_n = st.slider("Show top N by fraud probability", 5, 100, 20)
         top_risky = df_scored.sort_values("fraud_probability", ascending=False).head(top_n)
         st.dataframe(top_risky)
+
+    scored_csv = df_scored.to_csv(index=False).encode("utf-8")
+    st.download_button(
+        label="Download scored transactions CSV",
+        data=scored_csv,
+        file_name="fraud_scored_transactions.csv",
+        mime="text/csv",
+    )
 
     # --- Per-transaction explanation ---
     st.subheader("Explain a single transaction")
