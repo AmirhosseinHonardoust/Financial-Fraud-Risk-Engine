@@ -24,6 +24,7 @@ from src.dashboard_utils import (  # type: ignore
     format_percent,
     summarize_scored_transactions,
 )
+from src.reason_codes import shap_reason_codes, split_reason_codes  # type: ignore
 from src.score_new_transactions import score_dataframe  # type: ignore
 from src.validation import (  # type: ignore
     DataValidationError,
@@ -143,7 +144,7 @@ def explain_single_transaction(model, df_scored: pd.DataFrame, row_idx: int):
     """Compute SHAP values for a single row and return a matplotlib figure."""
     explainer, preprocessor, feature_names = get_shap_explainer(model)
 
-    cols_to_drop = [TARGET_COL, "fraud_probability", "fraud_flag", "risk_band"]
+    cols_to_drop = [TARGET_COL, "fraud_probability", "fraud_flag", "risk_band", "reason_codes"]
     features_df = df_scored.drop(columns=[c for c in cols_to_drop if c in df_scored.columns])
 
     x_row = features_df.iloc[[row_idx]]
@@ -166,7 +167,9 @@ def explain_single_transaction(model, df_scored: pd.DataFrame, row_idx: int):
     else:
         shap_for_fraud_class = shap_vals[0]
 
-    return plot_single_shap_bar(shap_for_fraud_class, feature_names)
+    fig = plot_single_shap_bar(shap_for_fraud_class, feature_names)
+    reasons = shap_reason_codes(shap_for_fraud_class, feature_names, max_reasons=5)
+    return fig, reasons
 
 
 # ------------- Streamlit UI ------------------
@@ -317,6 +320,7 @@ This app wraps a trained fraud detection model into an **interactive risk dashbo
                 "fraud_probability",
                 "fraud_flag",
                 "risk_band",
+                "reason_codes",
                 "amount",
                 "hour",
                 "device_risk_score",
@@ -378,11 +382,20 @@ This app wraps a trained fraud detection model into an **interactive risk dashbo
         f"fraud flag at threshold {thr:.2f}: **{int(row['fraud_flag'])}**"
     )
 
+    if "reason_codes" in row.index:
+        st.markdown("**Analyst reason codes**")
+        for reason in split_reason_codes(row.get("reason_codes")):
+            st.write(f"- {reason}")
+
     st.markdown("**Feature contribution (SHAP)**")
 
     with st.spinner("Computing feature contributions..."):
-        fig_shap = explain_single_transaction(model, df_scored, row_idx)
+        fig_shap, shap_reasons = explain_single_transaction(model, df_scored, row_idx)
         st.pyplot(fig_shap)
+
+    st.markdown("**SHAP-based reason codes**")
+    for reason in shap_reasons:
+        st.write(f"- {reason}")
 
 
 if __name__ == "__main__":
