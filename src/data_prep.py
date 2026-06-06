@@ -8,19 +8,20 @@ from .config import (
     TEST_SIZE,
     RANDOM_STATE,
 )
+from .validation import validate_training_dataframe
 
 
 def load_raw_data(path: str | None = None) -> pd.DataFrame:
     """Load the raw synthetic fraud dataset."""
     csv_path = RAW_DATA_PATH if path is None else path
     df = pd.read_csv(csv_path)
+    validate_training_dataframe(df, context="raw fraud dataset")
     return df
 
 
 def train_test_split_stratified(df: pd.DataFrame):
     """Create a stratified train/test split on the fraud label."""
-    if TARGET_COL not in df.columns:
-        raise ValueError(f"Target column '{TARGET_COL}' not found in dataframe.")
+    validate_training_dataframe(df, context="raw fraud dataset")
 
     train_df, test_df = train_test_split(
         df,
