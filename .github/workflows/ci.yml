@@ -105,6 +105,9 @@ jobs:
           test -f reports/metrics/evaluation_summary.json
           test -f reports/metrics/threshold_search.json
           test -f reports/metrics/threshold_search.csv
+          test -f reports/metrics/threshold_policy.json
+          test -f reports/metrics/threshold_policy.csv
+          test -f reports/metrics/threshold_policy.md
           test -f reports/metrics/test_scored.csv
           test -f reports/figures/roc_curve.png
           test -f reports/figures/pr_curve.png
@@ -128,6 +131,7 @@ jobs:
               "brier_score",
               "best_threshold",
               "baseline_metrics",
+              "threshold_policy_artifacts",
           }
           missing = required - set(data)
           if missing:
@@ -136,6 +140,11 @@ jobs:
           for key in ["majority_class", "empirical_prior", "stratified_random"]:
               if key not in data["baseline_metrics"]:
                   raise AssertionError(f"Missing baseline metrics for {key}")
+
+          policy_path = Path("reports/metrics/threshold_policy.json")
+          policy = json.loads(policy_path.read_text())
+          if "policy_candidates" not in policy or not policy["policy_candidates"]:
+              raise AssertionError("threshold_policy.json must contain policy_candidates")
 
           print("Evaluation summary JSON OK")
           PY
