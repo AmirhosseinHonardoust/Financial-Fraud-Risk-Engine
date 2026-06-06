@@ -91,12 +91,13 @@ jobs:
 
       - name: Verify expected outputs
         run: |
-          test -f models/fraud_model.joblib
-          test -f reports/metrics/classification_report.json
+          test -f models/fraud_pipeline.joblib
+          test -f models/threshold.json
+          test -f reports/metrics/metrics.json
           test -f reports/metrics/threshold_search.json
           test -f reports/metrics/test_scored.csv
           test -f reports/figures/roc_curve.png
-          test -f reports/figures/precision_recall_curve.png
+          test -f reports/figures/pr_curve.png
           test -f reports/figures/confusion_matrix.png
 
       - name: Upload generated artifacts
