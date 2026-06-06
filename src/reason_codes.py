@@ -1,0 +1,201 @@
+from __future__ import annotations
+
+import re
+from typing import Iterable
+
+import numpy as np
+import pandas as pd
+
+from .config import TARGET_COL
+
+SCORE_COLUMNS = {"fraud_probability", "fraud_flag", "risk_band", "reason_codes"}
+
+
+FRIENDLY_FEATURE_NAMES = {
+    "amount": "transaction amount",
+    "hour": "transaction hour",
+    "device_risk_score": "device risk score",
+    "ip_risk_score": "IP risk score",
+    "transaction_type": "transaction type",
+    "merchant_category": "merchant category",
+    "country": "country signal",
+}
+
+
+def _safe_float(value, default: float | None = None) -> float | None:
+    try:
+        if pd.isna(value):
+            return default
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def _safe_str(value) -> str:
+    if value is None or pd.isna(value):
+        return "unknown"
+    return str(value)
+
+
+def high_amount_cutoff(df: pd.DataFrame, quantile: float = 0.95) -> float | None:
+    """Return a robust high-amount cutoff from the current scoring batch."""
+    if "amount" not in df.columns or len(df) == 0:
+        return None
+
+    values = pd.to_numeric(df["amount"], errors="coerce").dropna()
+    if len(values) == 0:
+        return None
+
+    return float(values.quantile(quantile))
+
+
+def reason_codes_for_row(
+    row: pd.Series | dict,
+    *,
+    threshold: float = 0.5,
+    amount_cutoff: float | None = None,
+    max_reasons: int = 5,
+) -> list[str]:
+    """Create analyst-friendly rule-based reason codes for one transaction.
+
+    These reason codes are intentionally simple and deterministic. They summarize
+    obvious risk drivers in the input features and score output. They are not a
+    causal explanation and should be reviewed together with SHAP/model evidence.
+    """
+    if not isinstance(row, pd.Series):
+        row = pd.Series(row)
+
+    reasons: list[str] = []
+
+    fraud_probability = _safe_float(row.get("fraud_probability"))
+    if fraud_probability is not None:
+        if fraud_probability >= 0.75:
+            reasons.append("Critical model risk score")
+        elif fraud_probability >= threshold:
+            reasons.append("Model score is above the review threshold")
+
+    device_risk = _safe_float(row.get("device_risk_score"))
+    if device_risk is not None:
+        if device_risk >= 0.80:
+            reasons.append("High device risk score")
+        elif device_risk >= 0.60:
+            reasons.append("Elevated device risk score")
+
+    ip_risk = _safe_float(row.get("ip_risk_score"))
+    if ip_risk is not None:
+        if ip_risk >= 0.80:
+            reasons.append("High IP risk score")
+        elif ip_risk >= 0.60:
+            reasons.append("Elevated IP risk score")
+
+    amount = _safe_float(row.get("amount"))
+    if amount is not None and amount_cutoff is not None and amount >= amount_cutoff:
+        reasons.append("Transaction amount is high for this batch")
+
+    hour = _safe_float(row.get("hour"))
+    if hour is not None and (hour <= 5 or hour >= 23):
+        reasons.append("Transaction occurred during unusual hours")
+
+    transaction_type = _safe_str(row.get("transaction_type")).lower()
+    if transaction_type in {"transfer", "withdrawal", "wire"}:
+        reasons.append(f"Transaction type '{transaction_type}' is higher risk in the demo data")
+
+    merchant_category = _safe_str(row.get("merchant_category")).lower()
+    if merchant_category in {"crypto", "electronics", "luxury"}:
+        reasons.append(f"Merchant category '{merchant_category}' is higher risk in the demo data")
+
+    country = _safe_str(row.get("country"))
+    if country.upper() in {"RU", "CN"}:
+        reasons.append("Country signal is associated with higher synthetic-demo risk")
+
+    if not reasons:
+        reasons.append("No strong rule-based risk drivers identified")
+
+    return reasons[:max_reasons]
+
+
+def add_reason_codes(
+    df_scored: pd.DataFrame,
+    *,
+    threshold: float = 0.5,
+    max_reasons: int = 5,
+) -> pd.DataFrame:
+    """Add a semicolon-separated reason-code column to scored transactions."""
+    df = df_scored.copy()
+    cutoff = high_amount_cutoff(df)
+
+    df["reason_codes"] = [
+        "; ".join(
+            reason_codes_for_row(
+                row,
+                threshold=threshold,
+                amount_cutoff=cutoff,
+                max_reasons=max_reasons,
+            )
+        )
+        for _, row in df.iterrows()
+    ]
+
+    return df
+
+
+def humanize_feature_name(feature_name: str) -> str:
+    """Convert transformed sklearn feature names into analyst-friendly text."""
+    raw = str(feature_name)
+
+    for prefix in ("numeric__", "num__", "categorical__", "cat__"):
+        if raw.startswith(prefix):
+            raw = raw[len(prefix) :]
+            break
+
+    # OneHotEncoder feature names often look like: merchant_category_crypto.
+    for base in ["transaction_type", "merchant_category", "country"]:
+        if raw.startswith(base + "_"):
+            value = raw[len(base) + 1 :].replace("_", " ")
+            friendly_base = FRIENDLY_FEATURE_NAMES.get(base, base.replace("_", " "))
+            return f"{friendly_base} = {value}"
+
+    return FRIENDLY_FEATURE_NAMES.get(raw, raw.replace("_", " "))
+
+
+def shap_reason_codes(
+    shap_values: Iterable[float],
+    feature_names: Iterable[str],
+    *,
+    max_reasons: int = 5,
+) -> list[str]:
+    """Convert SHAP values into concise analyst-friendly reason codes."""
+    values = np.asarray(list(shap_values), dtype=float).reshape(-1)
+    names = np.asarray(list(feature_names), dtype=object).reshape(-1)
+
+    n = min(len(values), len(names))
+    if n == 0:
+        return ["No SHAP reason codes available"]
+
+    values = values[:n]
+    names = names[:n]
+
+    order = np.argsort(np.abs(values))[::-1]
+    reasons: list[str] = []
+
+    for idx in order:
+        value = float(values[idx])
+        if np.isclose(value, 0.0):
+            continue
+
+        feature = humanize_feature_name(str(names[idx]))
+        direction = "increased" if value > 0 else "reduced"
+        reasons.append(f"{feature} {direction} fraud risk")
+
+        if len(reasons) >= max_reasons:
+            break
+
+    return reasons or ["No strong SHAP drivers identified"]
+
+
+def split_reason_codes(value: str | float | None) -> list[str]:
+    """Split a saved reason-code string back into displayable list items."""
+    if value is None or pd.isna(value):
+        return []
+
+    return [item.strip() for item in str(value).split(";") if item.strip()]
