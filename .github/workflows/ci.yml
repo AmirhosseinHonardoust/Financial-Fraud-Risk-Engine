@@ -42,6 +42,15 @@ jobs:
         run: |
           python -m unittest discover -s tests -v
 
+      - name: Generate harder synthetic fraud dataset
+        run: |
+          python -m src.generate_synthetic_data \
+            --rows 3500 \
+            --fraud-rate 0.08 \
+            --label-noise 0.04 \
+            --seed 42 \
+            --output data/raw/synthetic_fraud_dataset.csv
+
       - name: Prepare data
         run: |
           python -m src.data_prep
