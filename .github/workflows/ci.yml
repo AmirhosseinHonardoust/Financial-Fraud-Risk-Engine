@@ -6,18 +6,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  smoke-test:
-    name: Smoke test on Python ${{ matrix.python-version }}
+  test-and-smoke:
+    name: Test and smoke workflow on Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
         python-version: ["3.10", "3.11", "3.12"]
-
-    env:
-      MPLBACKEND: Agg
-      PYTHONWARNINGS: ignore
 
     steps:
       - name: Check out repository
@@ -42,87 +38,71 @@ jobs:
         run: |
           python -m unittest discover -s tests -v
 
-      - name: Prepare small processed dataset
+      - name: Prepare data
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          import pandas as pd
-          from sklearn.model_selection import train_test_split
+          python -m src.data_prep
 
-          raw_path = Path("data/raw/synthetic_fraud_dataset.csv")
-          out_dir = Path("data/processed")
-          out_dir.mkdir(parents=True, exist_ok=True)
-
-          df = pd.read_csv(raw_path)
-          # Keep CI fast while preserving both classes and the project schema.
-          parts = []
-          for _, group in df.groupby("is_fraud"):
-              parts.append(group.sample(n=min(len(group), 120), random_state=42))
-          small = (
-              pd.concat(parts, ignore_index=True)
-              .sample(frac=1.0, random_state=42)
-              .reset_index(drop=True)
-          )
-
-          train_df, test_df = train_test_split(
-              small,
-              test_size=0.25,
-              stratify=small["is_fraud"],
-              random_state=42,
-          )
-
-          train_df.to_csv(out_dir / "transactions_train.csv", index=False)
-          test_df.to_csv(out_dir / "transactions_test.csv", index=False)
-          print(f"CI train shape: {train_df.shape}")
-          print(f"CI test shape: {test_df.shape}")
-          PY
-
-      - name: Train fraud model
+      - name: Train model
         run: |
           python -m src.train_model
 
-      - name: Evaluate thresholds and plots
+      - name: Evaluate model
         run: |
           python -m src.evaluate
 
       - name: Score held-out transactions
         run: |
-          python -m src.score_new_transactions data/processed/transactions_test.csv --output_csv reports/metrics/ci_scored_transactions.csv
+          python -m src.score_new_transactions \
+            data/processed/transactions_test.csv \
+            --output_csv reports/metrics/test_scored.csv
 
-      - name: Verify expected outputs
-        run: |
-          test -f data/processed/transactions_train.csv
-          test -f data/processed/transactions_test.csv
-          test -f models/fraud_pipeline.joblib
-          test -f models/threshold.json
-          test -f reports/metrics/metrics.json
-          test -f reports/metrics/threshold_search.json
-          test -f reports/metrics/ci_scored_transactions.csv
-          test -f reports/figures/roc_curve.png
-          test -f reports/figures/pr_curve.png
-          test -f reports/figures/confusion_matrix.png
-
-      - name: Validate scored output schema
+      - name: Validate scored CSV schema
         run: |
           python - <<'PY'
           import pandas as pd
-          path = "reports/metrics/ci_scored_transactions.csv"
+          from pathlib import Path
+
+          path = Path("reports/metrics/test_scored.csv")
+          if not path.exists():
+              raise FileNotFoundError(path)
+
           df = pd.read_csv(path)
-          required = {"fraud_probability", "fraud_flag"}
+
+          required = {
+              "fraud_probability",
+              "fraud_flag",
+          }
+
           missing = required - set(df.columns)
           if missing:
-              raise AssertionError(f"Missing scored output columns: {missing}")
+              raise AssertionError(f"Missing scored columns: {missing}")
+
           if not df["fraud_probability"].between(0, 1).all():
-              raise AssertionError("fraud_probability values must be between 0 and 1")
-          print(f"{path} OK: {len(df)} scored rows")
+              raise AssertionError("fraud_probability must be between 0 and 1")
+
+          if not set(df["fraud_flag"].dropna().unique()).issubset({0, 1}):
+              raise AssertionError("fraud_flag must be binary")
+
+          if not df["fraud_probability"].is_monotonic_decreasing:
+              raise AssertionError("scored transactions should be sorted by descending fraud_probability")
+
+          print("Scored CSV schema OK")
           PY
 
-      - name: Upload generated reports
+      - name: Verify expected outputs
+        run: |
+          test -f models/fraud_model.joblib
+          test -f reports/metrics/classification_report.json
+          test -f reports/metrics/threshold_search.json
+          test -f reports/metrics/test_scored.csv
+          test -f reports/figures/roc_curve.png
+          test -f reports/figures/precision_recall_curve.png
+          test -f reports/figures/confusion_matrix.png
+
+      - name: Upload generated artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: fraud-risk-engine-reports-python-${{ matrix.python-version }}
+          name: fraud-risk-engine-artifacts-python-${{ matrix.python-version }}
           path: |
-            models/fraud_pipeline.joblib
-            models/threshold.json
-            reports/metrics/
-            reports/figures/
+            models/
+            reports/
