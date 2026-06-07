@@ -333,7 +333,7 @@ This app wraps a trained fraud detection model into an **interactive risk dashbo
             if col in df_scored.columns
         ]
         top_risky = df_scored.head(top_n)
-        st.dataframe(top_risky[display_cols], use_container_width=True)
+        st.dataframe(top_risky[display_cols], width="stretch")
 
     scored_csv = df_scored.to_csv(index=False).encode("utf-8")
     st.download_button(
@@ -373,7 +373,7 @@ This app wraps a trained fraud detection model into an **interactive risk dashbo
     row = df_scored.iloc[row_idx]
 
     st.markdown("**Selected transaction**")
-    st.dataframe(row.to_frame().T, use_container_width=True)
+    st.dataframe(row.to_frame().T, width="stretch")
 
     st.markdown("**Model prediction**")
     st.write(
