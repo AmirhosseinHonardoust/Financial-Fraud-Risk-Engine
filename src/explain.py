@@ -34,10 +34,7 @@ def compute_and_plot_global_shap(
     For tree models (RandomForest), TreeExplainer is appropriate.
     """
     # Subsample for speed if needed
-    if len(X) > max_samples:
-        X_sample = X.sample(max_samples, random_state=0)
-    else:
-        X_sample = X
+    X_sample = X.sample(max_samples, random_state=0) if len(X) > max_samples else X
 
     # Extract underlying estimator after preprocessing
     preprocessor = model.named_steps["preprocess"]
@@ -46,10 +43,7 @@ def compute_and_plot_global_shap(
     X_transformed = preprocessor.transform(X_sample)
 
     # Convert sparse matrices to dense for SHAP summary plot
-    if sp.issparse(X_transformed):
-        X_for_shap = X_transformed.toarray()
-    else:
-        X_for_shap = X_transformed
+    X_for_shap = X_transformed.toarray() if sp.issparse(X_transformed) else X_transformed
 
     explainer = shap.TreeExplainer(clf)
     shap_values = explainer.shap_values(X_for_shap)
