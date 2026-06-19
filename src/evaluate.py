@@ -113,7 +113,9 @@ def compute_baseline_metrics(
         else:
             proba = clf.predict(X_test)
 
-        metrics = compute_probability_metrics(y_test.to_numpy(), proba)
+        metrics: dict[str, float | str] = dict(
+            compute_probability_metrics(y_test.to_numpy(), proba)
+        )
         metrics["strategy"] = strategy
         baselines[name] = metrics
 

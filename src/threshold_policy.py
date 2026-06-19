@@ -33,7 +33,7 @@ def _policy_row(name: str, row: dict[str, Any], rationale: str) -> dict[str, Any
         "tn",
         "fn",
     ]
-    result = {"policy": name, "rationale": rationale}
+    result: dict[str, Any] = {"policy": name, "rationale": rationale}
     for key in keys:
         result[key] = row.get(key)
     return result
@@ -91,7 +91,8 @@ def build_threshold_policy_candidates(
     add(
         "cost_optimized",
         cost_optimized,
-        "Minimizes expected business cost under the configured false-positive and false-negative costs.",
+        "Minimizes expected business cost under the configured "
+        "false-positive and false-negative costs.",
     )
 
     balanced_f1 = _max_by(
@@ -135,7 +136,8 @@ def build_threshold_policy_candidates(
     add(
         "high_precision",
         high_precision,
-        f"Maintains precision of at least {target_precision:.0%} while preserving as much recall as possible.",
+        f"Maintains precision of at least {target_precision:.0%} "
+        "while preserving as much recall as possible.",
     )
 
     review_capacity_pool = [
@@ -182,8 +184,10 @@ def build_threshold_policy_summary(
         "policy_candidates": candidates,
         "notes": [
             "These policies are decision-support artifacts, not automatic approval rules.",
-            "Thresholds should be reviewed with business, compliance, and operations stakeholders before deployment.",
-            "The demo dataset is synthetic; threshold values should not be reused for real banking data without validation.",
+            "Thresholds should be reviewed with business, compliance, and operations "
+            "stakeholders before deployment.",
+            "The demo dataset is synthetic; threshold values should not be reused "
+            "for real banking data without validation.",
         ],
     }
 
@@ -260,7 +264,10 @@ def _render_markdown_policy(summary: dict[str, Any]) -> str:
 
     for row in candidates:
         lines.append(
-            "| {policy} | {threshold} | {precision} | {recall} | {fpr} | {flagged} | {cost} | {rationale} |".format(
+            (
+                "| {policy} | {threshold} | {precision} | {recall} | "
+                "{fpr} | {flagged} | {cost} | {rationale} |"
+            ).format(
                 policy=row.get("policy", "n/a"),
                 threshold=_format_rate(row.get("threshold")),
                 precision=_format_rate(row.get("precision")),

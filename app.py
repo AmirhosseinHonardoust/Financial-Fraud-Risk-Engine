@@ -16,17 +16,17 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.append(str(PROJECT_ROOT))
 
-from src.config import METRICS_DIR, PROCESSED_DATA_DIR, TARGET_COL  # type: ignore
-from src.dashboard_utils import (  # type: ignore
+from src.config import METRICS_DIR, PROCESSED_DATA_DIR, TARGET_COL  # noqa: E402
+from src.dashboard_utils import (  # noqa: E402
     add_risk_band,
     build_model_metadata,
     format_float,
     format_percent,
     summarize_scored_transactions,
 )
-from src.reason_codes import shap_reason_codes, split_reason_codes  # type: ignore
-from src.score_new_transactions import score_dataframe  # type: ignore
-from src.validation import (  # type: ignore
+from src.reason_codes import shap_reason_codes, split_reason_codes  # noqa: E402
+from src.score_new_transactions import score_dataframe  # noqa: E402
+from src.validation import (  # noqa: E402
     REQUIRED_FEATURE_COLUMNS,
     DataValidationError,
     validate_scoring_dataframe,
@@ -148,19 +148,13 @@ def explain_single_transaction(model, df_scored: pd.DataFrame, row_idx: int):
     try:
         import scipy.sparse as sp
 
-        if sp.issparse(x_transformed):
-            x_for_shap = x_transformed.toarray()
-        else:
-            x_for_shap = x_transformed
+        x_for_shap = x_transformed.toarray() if sp.issparse(x_transformed) else x_transformed
     except ImportError:
         x_for_shap = x_transformed
 
     shap_vals = explainer.shap_values(x_for_shap)
 
-    if isinstance(shap_vals, list):
-        shap_for_fraud_class = shap_vals[1][0]
-    else:
-        shap_for_fraud_class = shap_vals[0]
+    shap_for_fraud_class = shap_vals[1][0] if isinstance(shap_vals, list) else shap_vals[0]
 
     fig = plot_single_shap_bar(shap_for_fraud_class, feature_names)
     reasons = shap_reason_codes(shap_for_fraud_class, feature_names, max_reasons=5)

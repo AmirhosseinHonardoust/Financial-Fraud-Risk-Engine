@@ -182,8 +182,8 @@ def generate_synthetic_fraud_dataset(
     device_risk_score[low_risk_fraud] = rng.beta(1.5, 4.5, size=int(low_risk_fraud.sum()))
     ip_risk_score[low_risk_fraud] = rng.beta(1.5, 4.2, size=int(low_risk_fraud.sum()))
 
-    device_risk_score = np.round(np.clip(device_risk_score, 0, 1), 4)
-    ip_risk_score = np.round(np.clip(ip_risk_score, 0, 1), 4)
+    device_risk_score = np.round(np.clip(device_risk_score, 0, 1), 4).astype(float)
+    ip_risk_score = np.round(np.clip(ip_risk_score, 0, 1), 4).astype(float)
 
     transaction_type = _sample_by_class(
         rng,
