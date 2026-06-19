@@ -2,11 +2,11 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from .config import (
-    RAW_DATA_PATH,
     PROCESSED_DATA_DIR,
+    RANDOM_STATE,
+    RAW_DATA_PATH,
     TARGET_COL,
     TEST_SIZE,
-    RANDOM_STATE,
 )
 from .validation import validate_training_dataframe
 

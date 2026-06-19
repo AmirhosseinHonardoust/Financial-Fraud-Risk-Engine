@@ -48,4 +48,4 @@ THRESHOLD_GRID = [i / 100 for i in range(5, 100, 5)]  # 0.05, 0.10, ..., 0.95
 
 # Very simple "business" cost assumptions
 COST_FALSE_NEGATIVE = 10.0  # missing a fraud is very expensive
-COST_FALSE_POSITIVE = 1.0   # incorrectly flagging a normal transaction
+COST_FALSE_POSITIVE = 1.0  # incorrectly flagging a normal transaction

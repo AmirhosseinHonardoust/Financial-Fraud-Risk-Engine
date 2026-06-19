@@ -3,7 +3,6 @@ from __future__ import annotations
 import csv
 import json
 from pathlib import Path
-from typing import Dict, List
 
 import joblib
 import matplotlib.pyplot as plt
@@ -79,7 +78,7 @@ def load_model_and_data():
     return model, X_train, y_train, X_test, y_test
 
 
-def compute_probability_metrics(y_true: np.ndarray, y_proba: np.ndarray) -> Dict[str, float]:
+def compute_probability_metrics(y_true: np.ndarray, y_proba: np.ndarray) -> dict[str, float]:
     """Compute probability-based fraud metrics.
 
     Average precision is the area under the precision-recall curve and is usually
@@ -97,9 +96,9 @@ def compute_baseline_metrics(
     y_train: pd.Series,
     X_test: pd.DataFrame,
     y_test: pd.Series,
-) -> Dict[str, Dict[str, float | str]]:
+) -> dict[str, dict[str, float | str]]:
     """Evaluate simple baselines so model performance has context."""
-    baselines: Dict[str, Dict[str, float | str]] = {}
+    baselines: dict[str, dict[str, float | str]] = {}
 
     for name, strategy in {
         "majority_class": "most_frequent",
@@ -124,8 +123,8 @@ def compute_baseline_metrics(
 def compute_threshold_metrics(
     y_true: np.ndarray,
     y_proba: np.ndarray,
-    thresholds: List[float],
-) -> List[Dict]:
+    thresholds: list[float],
+) -> list[dict]:
     """Evaluate thresholds and compute classification, rate, and cost metrics."""
     results = []
     n = len(y_true)
@@ -136,11 +135,7 @@ def compute_threshold_metrics(
 
         precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
         recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
-        f1 = (
-            2 * precision * recall / (precision + recall)
-            if (precision + recall) > 0
-            else 0.0
-        )
+        f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0.0
 
         fpr = fp / (fp + tn) if (fp + tn) > 0 else 0.0
         specificity = tn / (tn + fp) if (tn + fp) > 0 else 0.0
@@ -169,12 +164,12 @@ def compute_threshold_metrics(
     return results
 
 
-def pick_best_threshold(results: List[Dict]) -> Dict:
+def pick_best_threshold(results: list[dict]) -> dict:
     """Choose the threshold that minimizes cost, then prefers higher recall."""
     return min(results, key=lambda r: (r["cost"], -r["recall"], -r["precision"]))
 
 
-def save_threshold_search_csv(results: List[Dict]) -> None:
+def save_threshold_search_csv(results: list[dict]) -> None:
     path = METRICS_DIR / "threshold_search.csv"
     if not results:
         return
@@ -232,7 +227,7 @@ def plot_calibration(y_true: np.ndarray, y_proba: np.ndarray) -> None:
     print(f"Saved calibration curve to: {as_repo_relative_path(path)}")
 
 
-def plot_threshold_cost_curve(results: List[Dict]) -> None:
+def plot_threshold_cost_curve(results: list[dict]) -> None:
     df = pd.DataFrame(results)
 
     fig, ax = plt.subplots()
@@ -248,7 +243,7 @@ def plot_threshold_cost_curve(results: List[Dict]) -> None:
     print(f"Saved threshold cost curve to: {as_repo_relative_path(path)}")
 
 
-def plot_threshold_tradeoffs(results: List[Dict]) -> None:
+def plot_threshold_tradeoffs(results: list[dict]) -> None:
     df = pd.DataFrame(results)
 
     fig, ax = plt.subplots()

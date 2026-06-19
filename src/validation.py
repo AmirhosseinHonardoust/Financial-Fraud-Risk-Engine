@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Iterable, Sequence
+from collections.abc import Iterable, Sequence
 
 import numpy as np
 import pandas as pd
@@ -98,13 +98,17 @@ def validate_binary_target(df: pd.DataFrame, *, context: str = "dataframe") -> N
     target = df[TARGET_COL]
 
     if target.isna().any():
-        raise DataValidationError(f"{context} target column {TARGET_COL!r} contains missing values.")
+        raise DataValidationError(
+            f"{context} target column {TARGET_COL!r} contains missing values."
+        )
 
     values = set(pd.to_numeric(target, errors="coerce").dropna().astype(int).unique())
     original_non_null = target.dropna()
 
     if len(original_non_null) != len(target):
-        raise DataValidationError(f"{context} target column {TARGET_COL!r} contains invalid values.")
+        raise DataValidationError(
+            f"{context} target column {TARGET_COL!r} contains invalid values."
+        )
 
     if not values.issubset({0, 1}) or not values:
         raise DataValidationError(

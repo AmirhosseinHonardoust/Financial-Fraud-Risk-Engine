@@ -1,12 +1,9 @@
 from __future__ import annotations
 
-import re
-from typing import Iterable
+from collections.abc import Iterable
 
 import numpy as np
 import pandas as pd
-
-from .config import TARGET_COL
 
 SCORE_COLUMNS = {"fraud_probability", "fraud_flag", "risk_band", "reason_codes"}
 

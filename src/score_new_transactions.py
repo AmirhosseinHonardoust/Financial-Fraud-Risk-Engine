@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Optional
 
 import joblib
 import pandas as pd
@@ -63,7 +62,7 @@ def score_dataframe(
 
 def score_file(
     input_csv: str | Path,
-    output_csv: Optional[str | Path] = None,
+    output_csv: str | Path | None = None,
 ) -> Path:
     """Score a CSV of transactions and save a download-ready scored CSV."""
     model, threshold = load_model_and_threshold()

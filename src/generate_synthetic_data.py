@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import argparse
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Sequence
 
 import numpy as np
 import pandas as pd
@@ -42,8 +42,12 @@ def _sample_by_class(
     legit_mask = ~is_fraud
     fraud_mask = is_fraud
 
-    out[legit_mask] = rng.choice(values, size=int(legit_mask.sum()), p=_normalize_probs(legit_probs))
-    out[fraud_mask] = rng.choice(values, size=int(fraud_mask.sum()), p=_normalize_probs(fraud_probs))
+    out[legit_mask] = rng.choice(
+        values, size=int(legit_mask.sum()), p=_normalize_probs(legit_probs)
+    )
+    out[fraud_mask] = rng.choice(
+        values, size=int(fraud_mask.sum()), p=_normalize_probs(fraud_probs)
+    )
     return out
 
 
@@ -91,18 +95,62 @@ def generate_synthetic_fraud_dataset(
     amount = np.clip(amount, 2.0, 8_000.0).round(2)
 
     hour = np.empty(n_samples, dtype=int)
-    legit_hour_probs = _normalize_probs([
-        0.015, 0.012, 0.010, 0.010, 0.012, 0.018,
-        0.030, 0.050, 0.065, 0.075, 0.075, 0.070,
-        0.065, 0.060, 0.055, 0.052, 0.050, 0.048,
-        0.045, 0.040, 0.035, 0.030, 0.023, 0.015,
-    ])
-    fraud_hour_probs = _normalize_probs([
-        0.070, 0.080, 0.085, 0.075, 0.055, 0.040,
-        0.030, 0.025, 0.025, 0.030, 0.035, 0.035,
-        0.035, 0.035, 0.035, 0.035, 0.035, 0.040,
-        0.045, 0.050, 0.055, 0.060, 0.060, 0.060,
-    ])
+    legit_hour_probs = _normalize_probs(
+        [
+            0.015,
+            0.012,
+            0.010,
+            0.010,
+            0.012,
+            0.018,
+            0.030,
+            0.050,
+            0.065,
+            0.075,
+            0.075,
+            0.070,
+            0.065,
+            0.060,
+            0.055,
+            0.052,
+            0.050,
+            0.048,
+            0.045,
+            0.040,
+            0.035,
+            0.030,
+            0.023,
+            0.015,
+        ]
+    )
+    fraud_hour_probs = _normalize_probs(
+        [
+            0.070,
+            0.080,
+            0.085,
+            0.075,
+            0.055,
+            0.040,
+            0.030,
+            0.025,
+            0.025,
+            0.030,
+            0.035,
+            0.035,
+            0.035,
+            0.035,
+            0.035,
+            0.035,
+            0.035,
+            0.040,
+            0.045,
+            0.050,
+            0.055,
+            0.060,
+            0.060,
+            0.060,
+        ]
+    )
 
     hour[legit_mask] = rng.choice(
         np.arange(24),
@@ -186,8 +234,12 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--output", default=str(RAW_DATA_PATH), help="Output CSV path.")
     parser.add_argument("--rows", type=int, default=5_000, help="Number of rows to generate.")
-    parser.add_argument("--fraud-rate", type=float, default=0.08, help="Approximate base fraud rate.")
-    parser.add_argument("--label-noise", type=float, default=0.03, help="Fraction of labels to flip.")
+    parser.add_argument(
+        "--fraud-rate", type=float, default=0.08, help="Approximate base fraud rate."
+    )
+    parser.add_argument(
+        "--label-noise", type=float, default=0.03, help="Fraction of labels to flip."
+    )
     parser.add_argument("--seed", type=int, default=42, help="Random seed.")
     return parser.parse_args(argv)
 

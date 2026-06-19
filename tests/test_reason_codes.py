@@ -85,7 +85,9 @@ class ReasonCodeTests(unittest.TestCase):
 
     def test_split_reason_codes_handles_empty_values(self) -> None:
         self.assertEqual(split_reason_codes(None), [])
-        self.assertEqual(split_reason_codes("High risk; Large amount"), ["High risk", "Large amount"])
+        self.assertEqual(
+            split_reason_codes("High risk; Large amount"), ["High risk", "Large amount"]
+        )
 
 
 if __name__ == "__main__":

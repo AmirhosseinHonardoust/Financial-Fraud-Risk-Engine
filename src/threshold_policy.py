@@ -2,8 +2,9 @@ from __future__ import annotations
 
 import csv
 import json
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 
 def _safe_float(value: Any) -> float | None:
@@ -121,7 +122,9 @@ def build_threshold_policy_candidates(
         f"Maintains recall of at least {target_recall:.0%} while minimizing cost.",
     )
 
-    high_precision_pool = [r for r in rows if (_safe_float(r.get("precision")) or 0.0) >= target_precision]
+    high_precision_pool = [
+        r for r in rows if (_safe_float(r.get("precision")) or 0.0) >= target_precision
+    ]
     high_precision = _max_by(
         high_precision_pool,
         lambda r: (

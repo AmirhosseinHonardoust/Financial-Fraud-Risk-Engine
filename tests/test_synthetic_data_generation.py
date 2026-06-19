@@ -51,16 +51,18 @@ class SyntheticDataGenerationTests(unittest.TestCase):
     def test_generator_cli_writes_csv(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             output = Path(tmpdir) / "fraud.csv"
-            main([
-                "--output",
-                str(output),
-                "--rows",
-                "250",
-                "--fraud-rate",
-                "0.08",
-                "--seed",
-                "123",
-            ])
+            main(
+                [
+                    "--output",
+                    str(output),
+                    "--rows",
+                    "250",
+                    "--fraud-rate",
+                    "0.08",
+                    "--seed",
+                    "123",
+                ]
+            )
 
             self.assertTrue(output.exists())
             df = pd.read_csv(output)
