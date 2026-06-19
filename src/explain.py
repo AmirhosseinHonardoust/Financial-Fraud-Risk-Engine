@@ -5,6 +5,7 @@ import scipy.sparse as sp
 import shap
 
 from .config import FIGURES_DIR, MODELS_DIR, PROCESSED_DATA_DIR, TARGET_COL
+from .reason_codes import positive_class_shap_values
 
 
 def load_model_and_test():
@@ -46,13 +47,13 @@ def compute_and_plot_global_shap(
     X_for_shap = X_transformed.toarray() if sp.issparse(X_transformed) else X_transformed
 
     explainer = shap.TreeExplainer(clf)
-    shap_values = explainer.shap_values(X_for_shap)
+    shap_values = positive_class_shap_values(explainer.shap_values(X_for_shap))
 
     # SHAP expects names for features; use transformed feature names
     feature_names = preprocessor.get_feature_names_out()
 
     shap.summary_plot(
-        shap_values[1],  # class 1 (fraud)
+        shap_values,  # class 1 (fraud)
         X_for_shap,
         feature_names=feature_names,
         show=False,

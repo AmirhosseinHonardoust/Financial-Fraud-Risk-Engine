@@ -24,7 +24,11 @@ from src.dashboard_utils import (  # noqa: E402
     format_percent,
     summarize_scored_transactions,
 )
-from src.reason_codes import shap_reason_codes, split_reason_codes  # noqa: E402
+from src.reason_codes import (  # noqa: E402
+    positive_class_shap_values,
+    shap_reason_codes,
+    split_reason_codes,
+)
 from src.score_new_transactions import score_dataframe  # noqa: E402
 from src.validation import (  # noqa: E402
     REQUIRED_FEATURE_COLUMNS,
@@ -154,7 +158,7 @@ def explain_single_transaction(model, df_scored: pd.DataFrame, row_idx: int):
 
     shap_vals = explainer.shap_values(x_for_shap)
 
-    shap_for_fraud_class = shap_vals[1][0] if isinstance(shap_vals, list) else shap_vals[0]
+    shap_for_fraud_class = positive_class_shap_values(shap_vals)[0]
 
     fig = plot_single_shap_bar(shap_for_fraud_class, feature_names)
     reasons = shap_reason_codes(shap_for_fraud_class, feature_names, max_reasons=5)

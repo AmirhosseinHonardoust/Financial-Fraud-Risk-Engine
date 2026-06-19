@@ -156,6 +156,28 @@ def humanize_feature_name(feature_name: str) -> str:
     return FRIENDLY_FEATURE_NAMES.get(raw, raw.replace("_", " "))
 
 
+def positive_class_shap_values(shap_values: object) -> np.ndarray:
+    """Return SHAP values for the positive (fraud) class, across shap versions.
+
+    ``TreeExplainer.shap_values`` has returned different shapes over time for
+    binary classifiers:
+
+    - legacy shap: a list ``[class_0_array, class_1_array]``;
+    - modern shap (>= 0.43): a single array shaped
+      ``(n_samples, n_features, n_classes)``.
+
+    This normalizes both (and an already-2-D array) to the class-1 values so the
+    rest of the code can stay version-agnostic.
+    """
+    if isinstance(shap_values, list):
+        return np.asarray(shap_values[1])
+
+    arr = np.asarray(shap_values)
+    if arr.ndim == 3:
+        return arr[..., 1]
+    return arr
+
+
 def shap_reason_codes(
     shap_values: Iterable[float],
     feature_names: Iterable[str],
