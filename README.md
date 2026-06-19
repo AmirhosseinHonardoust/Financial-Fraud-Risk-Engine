@@ -457,15 +457,15 @@ Example results from the included harder synthetic-data workflow:
 | Metric | Example value |
 |---|---:|
 | ROC-AUC | 0.976 |
-| Average precision / PR-AUC | 0.843 |
-| Brier score | 0.052 |
-| Selected threshold | 0.30 |
-| Precision at selected threshold | 0.514 |
-| Recall at selected threshold | 0.961 |
-| Flagged rate | 0.206 |
+| Average precision / PR-AUC | 0.838 |
+| Brier score | 0.061 |
+| Selected threshold | 0.35 |
+| Precision at selected threshold | 0.481 |
+| Recall at selected threshold | 0.974 |
+| Flagged rate | 0.223 |
 </div>
 
-> These values are from a synthetic demo dataset and should not be interpreted as real-world fraud detection performance.
+> These values are from a synthetic demo dataset and should not be interpreted as real-world fraud detection performance. Exact numbers are reproducible with `--seed 42` but may shift slightly across scikit-learn/NumPy versions.
 
 ---
 
@@ -628,6 +628,7 @@ Potential next improvements:
 - pandas
 - NumPy
 - scikit-learn
+- SciPy
 - SHAP
 - Streamlit
 - matplotlib
