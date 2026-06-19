@@ -182,7 +182,7 @@ This app wraps a trained fraud detection model into an **interactive risk dashbo
 """)
 
     st.warning(
-        "This dashboard uses a synthetic, highly separable demo dataset. "
+        "This dashboard uses a synthetic demo dataset with overlapping classes and label noise. "
         "It demonstrates fraud-risk workflow design, not real-world fraud benchmark performance."
     )
 
