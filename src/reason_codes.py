@@ -58,10 +58,11 @@ def reason_codes_for_row(
     These reason codes are intentionally simple and deterministic. They summarize
     obvious risk drivers in the input features and score output. They are not a
     causal explanation and should be reviewed together with SHAP/model evidence.
-    """
-    if not isinstance(row, pd.Series):
-        row = pd.Series(row)
 
+    Accepts either a pandas Series or a plain mapping (e.g. a row from
+    ``DataFrame.to_dict("records")``); both support ``.get`` so no per-row Series
+    construction is needed.
+    """
     reasons: list[str] = []
 
     fraud_probability = _safe_float(row.get("fraud_probability"))
@@ -124,13 +125,13 @@ def add_reason_codes(
     df["reason_codes"] = [
         "; ".join(
             reason_codes_for_row(
-                row,
+                record,
                 threshold=threshold,
                 amount_cutoff=cutoff,
                 max_reasons=max_reasons,
             )
         )
-        for _, row in df.iterrows()
+        for record in df.to_dict("records")
     ]
 
     return df
