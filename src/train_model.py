@@ -69,8 +69,9 @@ def train_and_evaluate() -> dict:
         "positive_rate_train": float(y_train.mean()),
         "positive_rate_test": float(y_test.mean()),
         "note": (
-            "This synthetic demo dataset is highly separable. Probability metrics should be "
-            "interpreted as workflow checks, not real-world fraud benchmark performance."
+            "This synthetic demo dataset has overlapping classes and injected label noise. "
+            "Probability metrics should be interpreted as workflow checks, not real-world "
+            "fraud benchmark performance."
         ),
     }
 

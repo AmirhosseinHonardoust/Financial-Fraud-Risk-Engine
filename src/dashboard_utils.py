@@ -83,8 +83,8 @@ def build_model_metadata(
         "threshold_recall": best_threshold.get("recall"),
         "threshold_precision": best_threshold.get("precision"),
         "data_note": (
-            "Synthetic, highly separable demo data. Metrics validate the workflow and should not "
-            "be treated as real-world fraud benchmark performance."
+            "Synthetic demo data with overlapping classes and label noise. Metrics validate "
+            "the workflow and should not be treated as real-world fraud benchmark performance."
         ),
     }
 
