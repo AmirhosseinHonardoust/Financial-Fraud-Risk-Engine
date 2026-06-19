@@ -5,7 +5,7 @@ import unittest
 import numpy as np
 import pandas as pd
 
-from src.config import CATEGORICAL_FEATURES, NUMERIC_FEATURES, TARGET_COL
+from src.config import NUMERIC_FEATURES, TARGET_COL
 from src.features import build_pipeline
 from src.score_new_transactions import score_dataframe
 from src.validation import (
@@ -27,8 +27,26 @@ class ValidationAndScoringTests(unittest.TestCase):
                 "hour": [9, 23, 10, 2, 14, 1, 11, 3],
                 "device_risk_score": [0.05, 0.9, 0.1, 0.85, 0.02, 0.95, 0.07, 0.88],
                 "ip_risk_score": [0.03, 0.8, 0.12, 0.9, 0.04, 0.93, 0.1, 0.86],
-                "transaction_type": ["purchase", "transfer", "purchase", "transfer", "purchase", "transfer", "purchase", "transfer"],
-                "merchant_category": ["retail", "crypto", "grocery", "electronics", "retail", "crypto", "grocery", "electronics"],
+                "transaction_type": [
+                    "purchase",
+                    "transfer",
+                    "purchase",
+                    "transfer",
+                    "purchase",
+                    "transfer",
+                    "purchase",
+                    "transfer",
+                ],
+                "merchant_category": [
+                    "retail",
+                    "crypto",
+                    "grocery",
+                    "electronics",
+                    "retail",
+                    "crypto",
+                    "grocery",
+                    "electronics",
+                ],
                 "country": ["DE", "RU", "DE", "CN", "DE", "RU", "FR", "CN"],
                 TARGET_COL: [0, 1, 0, 1, 0, 1, 0, 1],
             }
@@ -62,9 +80,8 @@ class ValidationAndScoringTests(unittest.TestCase):
 
     def test_threshold_validation_rejects_invalid_values(self) -> None:
         for value in [-0.1, 1.1]:
-            with self.subTest(value=value):
-                with self.assertRaises(DataValidationError):
-                    validate_threshold(value)
+            with self.subTest(value=value), self.assertRaises(DataValidationError):
+                validate_threshold(value)
 
     def test_score_dataframe_adds_probability_and_flag(self) -> None:
         df = self._demo_transactions()
@@ -83,7 +100,10 @@ class ValidationAndScoringTests(unittest.TestCase):
         self.assertTrue(scored["fraud_probability"].between(0, 1).all())
         self.assertTrue(set(scored["fraud_flag"].unique()).issubset({0, 1}))
         self.assertTrue(
-            np.all(scored["fraud_probability"].to_numpy()[:-1] >= scored["fraud_probability"].to_numpy()[1:])
+            np.all(
+                scored["fraud_probability"].to_numpy()[:-1]
+                >= scored["fraud_probability"].to_numpy()[1:]
+            )
         )
 
 

@@ -27,12 +27,11 @@ from src.dashboard_utils import (  # type: ignore
 from src.reason_codes import shap_reason_codes, split_reason_codes  # type: ignore
 from src.score_new_transactions import score_dataframe  # type: ignore
 from src.validation import (  # type: ignore
-    DataValidationError,
     REQUIRED_FEATURE_COLUMNS,
+    DataValidationError,
     validate_scoring_dataframe,
     validate_threshold,
 )
-
 
 # ------------- Helpers for loading model, metadata, and data ------------------
 
@@ -41,10 +40,7 @@ from src.validation import (  # type: ignore
 def load_model():
     model_path = PROJECT_ROOT / "models" / "fraud_pipeline.joblib"
     if not model_path.exists():
-        st.error(
-            f"Model not found at {model_path}. "
-            "Run `python -m src.train_model` first."
-        )
+        st.error(f"Model not found at {model_path}. " "Run `python -m src.train_model` first.")
         st.stop()
 
     return joblib.load(model_path)
@@ -79,8 +75,7 @@ def load_sample_data() -> pd.DataFrame:
     test_path = PROCESSED_DATA_DIR / "transactions_test.csv"
     if not test_path.exists():
         st.error(
-            f"Processed test data not found at {test_path}. "
-            "Run `python -m src.data_prep` first."
+            f"Processed test data not found at {test_path}. " "Run `python -m src.data_prep` first."
         )
         st.stop()
 
@@ -182,8 +177,7 @@ def main():
     )
 
     st.title("Financial Fraud Risk Engine")
-    st.markdown(
-        """
+    st.markdown("""
 This app wraps a trained fraud detection model into an **interactive risk dashboard**.
 
 - Upload transaction data or use the built-in test set  
@@ -191,8 +185,7 @@ This app wraps a trained fraud detection model into an **interactive risk dashbo
 - Explore **risk distribution**, **risk bands**, and **flagged transactions**  
 - Download scored transactions for analyst review  
 - Inspect **feature-level explanations** for individual transactions
-"""
-    )
+""")
 
     st.warning(
         "This dashboard uses a synthetic, highly separable demo dataset. "

@@ -1,7 +1,7 @@
 from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from .config import CATEGORICAL_FEATURES, NUMERIC_FEATURES, RANDOM_STATE
 

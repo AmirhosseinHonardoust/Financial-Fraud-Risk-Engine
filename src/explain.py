@@ -1,13 +1,10 @@
-from pathlib import Path
-
 import joblib
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
-import shap
 import scipy.sparse as sp
+import shap
 
-from .config import MODELS_DIR, PROCESSED_DATA_DIR, TARGET_COL, FIGURES_DIR
+from .config import FIGURES_DIR, MODELS_DIR, PROCESSED_DATA_DIR, TARGET_COL
 
 
 def load_model_and_test():

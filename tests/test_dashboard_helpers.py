@@ -4,8 +4,8 @@ import unittest
 
 import pandas as pd
 
-from src.dashboard_utils import add_risk_band, build_model_metadata, summarize_scored_transactions
 from src.config import TARGET_COL
+from src.dashboard_utils import add_risk_band, build_model_metadata, summarize_scored_transactions
 
 
 class DashboardHelperTests(unittest.TestCase):
